@@ -1,5 +1,6 @@
 package tutorial;
 
-public class Storage {
-
+interface Storage {
+    void writefile();
+    String readfile();
 }
