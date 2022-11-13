@@ -1,13 +1,17 @@
 package Storage;
 
 public class MessagesStorage extends Storage{
-    @Override
-    public void writefile(String text, String file_name) {
-
+    public MessagesStorage(String name) {
+        super("storage/messages/" + name + ".txt");
     }
 
     @Override
-    public String readfile(String file_name) {
-        return null;
+    public void writefile(String text) {
+        super.writefile(text);
+    }
+
+    @Override
+    public String readfile() {
+        return super.readfile();
     }
 }

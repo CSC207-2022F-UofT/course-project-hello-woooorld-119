@@ -1,13 +1,17 @@
 package Storage;
 
 public class ChatroomStorage extends Storage {
-    @Override
-    public void writefile(String text, String file_name) {
-        super.writefile(text, "");
+    public ChatroomStorage(String name) {
+        super("storage/chatrooms/" + name + ".txt");
     }
 
     @Override
-    public String readfile(String file_name) {
-        return null;
+    public void writefile(String text) {
+        super.writefile(text);
+    }
+
+    @Override
+    public String readfile() {
+        return super.readfile();
     }
 }

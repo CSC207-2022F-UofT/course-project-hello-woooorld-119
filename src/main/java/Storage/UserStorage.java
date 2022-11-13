@@ -1,12 +1,17 @@
 package Storage;
 
 public class UserStorage extends Storage{
-    @Override
-    public void writefile(String text, String file_name) {
+    public UserStorage(String name) {
+        super("storage/profiles/" + name + ".txt");
     }
 
     @Override
-    public String readfile(String file_name) {
-        return null;
+    public void writefile(String text) {
+        super.writefile(text);
+    }
+
+    @Override
+    public String readfile() {
+        return super.readfile();
     }
 }
