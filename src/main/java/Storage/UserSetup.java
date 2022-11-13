@@ -22,9 +22,3 @@ public class UserSetup {
     }
 }
 
-class UserInfo {
-    String profilePicPath;
-    String bio;
-    String status;
-    String comment;
-}
