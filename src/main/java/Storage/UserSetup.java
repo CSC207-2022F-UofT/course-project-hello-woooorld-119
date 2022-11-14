@@ -9,7 +9,7 @@ public class UserSetup {
         this.name = user_name;
     }
 
-    public void Recreate() {
+    public User Recreate() {
         Storage user_storage = new UserStorage(name);
         Gson gson = new Gson();
         UserInfo information = gson.fromJson(user_storage.readfile(), UserInfo.class);
@@ -19,6 +19,8 @@ public class UserSetup {
         user.setProfilePic(information.profilePicPath);
         user.setStatus(information.status);
         user.setComment(information.comment);
+
+        return user;
     }
 }
 

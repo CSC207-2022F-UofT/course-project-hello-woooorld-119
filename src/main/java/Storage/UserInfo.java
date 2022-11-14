@@ -21,7 +21,7 @@ class MessagesInfo {
 }
 
 class ChatroomsInfo {
-    List messages;
-    List users;
+    List<String> messages;
+    List<String> users;
     List adminUsers;
 }
