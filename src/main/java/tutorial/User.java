@@ -22,11 +22,14 @@ public class User {
      * @param id the User's id as assigned when the User is created
      */
 
-    public User(String displayName, int id) {
+    public User(String displayName, int id, String username, String password) {
         this.displayName = displayName;
-        this.id = id; //need to determine how we will be creating id and ensuring it does not already exist //
+        this.id = id; 
         this.listofChatroom = new ArrayList<Chatroom>();
         this.friendsList = new ArrayList<User>();
+        this.username = username; //need to determine username and ensuring it does not already exist in the storage//
+        this.password = password;
+        this.loginTracker = new ArrayList<>();
     }
 
     public void addUserToChatroom(Chatroom group){
@@ -40,19 +43,6 @@ public class User {
     public void removeUserFromFriendList(User friend){
 
     }
-    public User(String username, String password){
-        this.username = username;
-        this.password = password;
-        this.loginTracker = new ArrayList<>();
-
-    }
-
-    public User(String username, String password, ArrayList<Timestamp>loginTracker){
-        this.username = username;
-        this.password = password;
-        this.loginTracker = loginTracker;
-    }
-
     // Setter username and getter username
 
     public void setUsername(String username){
