@@ -1,5 +1,5 @@
 package Storage;
-import User.User;
+import User.PublicProfile;
 import com.google.gson.Gson;
 
 public class UserSetup {
@@ -9,12 +9,12 @@ public class UserSetup {
         this.name = user_name;
     }
 
-    public User Recreate() {
+    public PublicProfile Recreate() {
         Storage user_storage = new UserStorage(name);
         Gson gson = new Gson();
         UserInfo information = gson.fromJson(user_storage.readfile(), UserInfo.class);
 
-        User user = new User();
+        PublicProfile user = new PublicProfile();
         user.setBio(information.bio);
         user.setProfilePic(information.profilePicPath);
         user.setStatus(information.status);

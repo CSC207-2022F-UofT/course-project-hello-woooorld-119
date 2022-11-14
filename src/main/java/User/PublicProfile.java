@@ -1,6 +1,6 @@
 package User;
 
-public class User implements PublicProfileInterface {
+public class PublicProfile implements PublicProfileInterface {
     @Override
     public void setProfilePic(String path) {
 

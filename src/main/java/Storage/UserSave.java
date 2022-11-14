@@ -1,5 +1,4 @@
 package Storage;
-import User.User;
 import com.google.gson.Gson;
 
 public class UserSave {
