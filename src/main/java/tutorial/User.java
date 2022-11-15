@@ -30,6 +30,7 @@ public class User {
         this.username = username; //need to determine username and ensuring it does not already exist in the storage//
         this.password = password;
         this.loginTracker = new ArrayList<>();
+
     }
 
     public void addUserToChatroom(Chatroom group){
@@ -43,6 +44,7 @@ public class User {
     public void removeUserFromFriendList(User friend){
 
     }
+
     // Setter username and getter username
 
     public void setUsername(String username){
@@ -78,3 +80,7 @@ public class User {
     }
 
 }
+
+
+}
+

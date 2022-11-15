@@ -16,4 +16,20 @@ public class Chatroom {
     }
 
 
+    public void AddUser(int userid){
+        this.UserList.add(userid);
+    }
+
+    public void RemoveUser(int userid){
+        this.UserList.remove(userid);
+        if (UserList.size() == 0){
+            // code to delete chatroom from storage
+        }
+
+    }
+
+    public void setMessages(){
+        // set up the Chatroom with all the messages from ChatroomStorage //
+    }
+
 }
