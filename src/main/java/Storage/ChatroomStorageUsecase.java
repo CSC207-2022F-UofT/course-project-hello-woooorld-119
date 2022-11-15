@@ -1,12 +1,14 @@
 package Storage;
 
-import Chatroom.Chatroom;
 import com.google.gson.Gson;
+import tutorial.Chatroom;
 
-public class ChatroomSetup {
+import java.util.List;
+
+public class ChatroomStorageUsecase {
     private String name;
 
-    public ChatroomSetup(String name) {
+    public ChatroomStorageUsecase(String name) {
         this.name = name;
     }
 
@@ -16,10 +18,10 @@ public class ChatroomSetup {
         Gson gson = new Gson();
         ChatroomsInfo information = gson.fromJson(chatroom_storage.readfile(), ChatroomsInfo.class);
 
-        Chatroom chatroom = new Chatroom();
+        Chatroom chatroom = new Chatroom(information.name, information.adminUser);
 
         for (String person : information.users) {
-            chatroom.addUser(person);
+            chatroom.AddUser(person);
         }
 
         for (String message : information.messages) {
@@ -27,5 +29,8 @@ public class ChatroomSetup {
         }
 
         return chatroom;
+    }
+
+    public void Save(String name, List<String> messages, String adminuser) {
     }
 }

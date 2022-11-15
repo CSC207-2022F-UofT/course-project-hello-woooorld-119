@@ -23,5 +23,6 @@ class MessagesInfo {
 class ChatroomsInfo {
     List<String> messages;
     List<String> users;
-    List adminUsers;
+    String adminUser;
+    String name;
 }
