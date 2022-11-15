@@ -1,5 +1,8 @@
 package Storage;
 
+import tutorial.Chatroom;
+
+import java.util.ArrayList;
 import java.util.List;
 
 class UserInfo {
@@ -7,6 +10,11 @@ class UserInfo {
     String bio;
     String status;
     String comment;
+}
+
+class UserEntityInfo {
+    String displayName;
+    ArrayList<Chatroom> listOfChatroom;
 }
 
 class AccountsInfo {
