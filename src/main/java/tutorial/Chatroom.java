@@ -15,24 +15,5 @@ public class Chatroom {
         // this.admin references the creating user of the chatroom //
     }
 
-    public Chatroom(String name, String adminUser) {
-        //constructor like this?
-    }
-
-    public void AddUser(String userid){
-        this.UserList.add(userid);
-    }
-
-    public void RemoveUser(String serid){
-        this.UserList.remove(userid);
-        if (UserList.size() == 0){
-            // code to delete chatroom from storage
-        }
-
-    }
-
-    public void setMessage(String message){
-        // set up the Chatroom with all the messages from ChatroomStorage //
-    }
 
 }

@@ -1,7 +1,7 @@
 package Storage;
 
 public class AccountsStorage extends Storage{
-    public AccountsStorage(String name) {
+    public AccountsStorage() {
         super("storage/accounts.txt");
     }
 

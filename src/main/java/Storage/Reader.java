@@ -1,10 +1,15 @@
 package Storage;
 import com.google.gson.Gson;
 
-public class Reader<T> {
-    public Object Understand(String path, T obj) {
+public class Reader implements ReaderInterface {
+    public Object Read(String text, Class obj) {
         Gson gson = new Gson();
-//        return gson.fromJson(path, (T) obj.class);
-        return new Object();
+        return gson.fromJson(text, obj);
+    }
+
+    public String ToString(Object obj) {
+        Gson gson = new Gson();
+
+        return gson.toJson(obj);
     }
 }
