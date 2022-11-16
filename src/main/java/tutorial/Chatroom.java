@@ -10,6 +10,8 @@ public class Chatroom {
         this.name = name;
         this.user_list = new ArrayList<>();
         this.admin = admin;
+
+        this.user_list.add(admin.getUsername());
     }
 
     public void AddUser(String username){
