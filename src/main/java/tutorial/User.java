@@ -24,12 +24,13 @@ public class User {
 
     public User(String displayName, int id, String username, String password) {
         this.displayName = displayName;
-        this.id = id; 
+        this.id = id;
         this.listofChatroom = new ArrayList<Chatroom>();
         this.friendsList = new ArrayList<User>();
         this.username = username; //need to determine username and ensuring it does not already exist in the storage//
         this.password = password;
         this.loginTracker = new ArrayList<>();
+
     }
 
     public void addUserToChatroom(Chatroom group){
@@ -67,6 +68,30 @@ public class User {
         this.loginTracker = loginTracker;
     }
 
+    // Setter username and getter username
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public String getUsername(){
+        return username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    // Setter of loginTracker and getter of loginTacker
+
+    public void setLoginTracker(ArrayList<Timestamp>loginTracker){
+        this.loginTracker = loginTracker;
+    }
+
     public ArrayList<Timestamp>getLoginTracker(){
         return loginTracker;
     }
@@ -78,3 +103,7 @@ public class User {
     }
 
 }
+
+
+}
+
