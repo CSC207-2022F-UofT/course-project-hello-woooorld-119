@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Chatroom {
     private String name;
     private ArrayList<String> user_list; // list of unique usernames of the users in the chatroom
-    private User admin; // User who created the chatroom
-    public Chatroom(String name, User admin) {
+    private String admin_name; // User who created the chatroom
+    public Chatroom(String name, String admin_name) {
         this.name = name;
         this.user_list = new ArrayList<>();
-        this.admin = admin;
+        this.admin_name = admin_name;
 
-        this.user_list.add(admin.getUsername());
+        this.user_list.add(admin_name);
     }
 
     public void AddUser(String username){
@@ -33,12 +33,12 @@ public class Chatroom {
     public void setName(String new_name){
         this.name = new_name;
     }
-    public User getAdmin(){
-        return this.admin;
+    public String getAdmin_name (){
+        return this.admin_name;
     }
 
-    public void setAdmin(User user_object){
-        this.admin = user_object;
+    public void setAdmin(String new_admin_name){
+        this.admin_name = new_admin_name;
     }
 
     // to be done after storage is created
