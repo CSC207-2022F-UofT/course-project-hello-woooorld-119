@@ -15,6 +15,7 @@ public class Chatroom {
         // this.admin references the creating user of the chatroom //
     }
 
+
     public void AddUser(int userid){
         this.UserList.add(userid);
     }
