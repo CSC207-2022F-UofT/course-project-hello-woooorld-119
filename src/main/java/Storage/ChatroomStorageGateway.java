@@ -6,5 +6,4 @@ import tutorial.Chatroom;
 public interface ChatroomStorageGateway {
     Chatroom getData();
     void saveData(Chatroom new_chatroom);
-
 }
