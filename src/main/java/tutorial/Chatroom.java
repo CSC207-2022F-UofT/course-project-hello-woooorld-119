@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Chatroom {
     private String name;
-    private ArrayList<String> user_list; // list of unique usernames of the users in the chatroom
+    private final ArrayList<String> user_list; // list of unique usernames of the users in the chatroom
     private String admin_name; // User who created the chatroom
     public Chatroom(String name, String admin_name) {
         this.name = name;
@@ -25,6 +25,10 @@ public class Chatroom {
             // code to delete chatroom from storage
         }
 
+    }
+
+    public ArrayList<String> get_user_lst(){
+        return this.user_list;
     }
 
 

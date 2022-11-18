@@ -32,6 +32,14 @@ public class User {
         this.loginTracker = new ArrayList<>();
 
     }
+    public ArrayList<Chatroom> get_user_chatroom() {
+        //returns the chatroom user is in as a list
+        return this.listofChatroom;
+    }
+    public ArrayList<User> get_user_friends(){
+        //returns the friends of this user
+        return this.friendsList;
+        }
 
     public void addUserToChatroom(Chatroom group){
 

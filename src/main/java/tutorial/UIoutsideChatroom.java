@@ -21,7 +21,7 @@ public class UIoutsideChatroom {
 
     public void display_chatrooms(){
         //displays the chatroom with their icon picture
-        UIoutsidechatroom_backend obj = null;
+        UIoutsidechatroom_backend obj = new UIoutsidechatroom_backend();
         for (Chatroom chatroom: obj.getchatroomlst(this.user)){
             this.create_enter_chatroom_button(chatroom);
         }
@@ -29,7 +29,7 @@ public class UIoutsideChatroom {
 
     public void display_friend_lst(){
         //display this user's friendlist
-        UIoutsidechatroom_backend obj = null;
+        UIoutsidechatroom_backend obj = new UIoutsidechatroom_backend();
         for (User friend: obj.getuserfriends(this.user)){
             this.enter_friend_public_profile_button(friend);
         }
