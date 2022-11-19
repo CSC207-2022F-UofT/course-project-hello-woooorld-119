@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /*
  * This is a controller class that allows the user to input data when logging into the system.
@@ -30,12 +31,8 @@ public class LoginPage{
         while (temp){
             try{
                 // Used to read the input from user.
-                Scanner inputReader = new Scanner(System.in);
-
-                System.out.println("Please enter your username: ");
-                String username = inputReader.nextLine();
-                System.out.println("Please enter your password: ");
-                String password = inputReader.nextLine();
+                String username = JOptionPane.showInputDialog("Please enter your username: ");
+                String password = JOptionPane.showInputDialog("Please enter your password: ");
 
                 // Checks whether the user exists.
                 HashMap<String, Boolean> status = getLoginUseCase().checkUser(username, password);
@@ -46,7 +43,7 @@ public class LoginPage{
 
             }
             catch (InputMismatchException e){
-                System.out.println("The input is incorrect. Please try again.");
+                JOptionPane.showMessageDialog(null, "The input is incorrect. Please try again.");
             }
         }
     }
