@@ -1,38 +1,22 @@
 package Storage;
-
-import com.google.gson.Gson;
 import tutorial.Chatroom;
 
-import java.util.List;
-
-public class ChatroomStorageUsecase {
-    private String name;
-
+public class ChatroomStorageUsecase implements ChatroomStorageGateway{
+    Storage chatroom_storage;
+    Reader reader;
     public ChatroomStorageUsecase(String name) {
-        this.name = name;
+        this.chatroom_storage= new ChatroomStorage(name);
+        this.reader = new Reader();
     }
 
-//    public Chatroom Recreate() {
-//        Storage chatroom_storage = new ChatroomStorage(this.name);
-//
-////        Gson gson = new Gson();
-////        ChatroomsInfo information = gson.fromJson(chatroom_storage.readfile(), ChatroomsInfo.class);
-////
-////        Chatroom chatroom = new Chatroom(information.name, information.adminUser);
-////
-////        for (String person : information.users) {
-////            chatroom.AddUser(person);
-////        }
-////
-////        for (String message : information.messages) {
-////            chatroom.setMessage(message);
-////        }
-////
-////        return chatroom;
-////        return new Chatroom();
-//    }
+    @Override
+    public Chatroom getData() {
+        Chatroom info = (Chatroom) reader.Read(chatroom_storage.readfile(), Chatroom.class);
+        return info;
+    }
 
-    public void Save(List<String> messages, String adminuser) {
-
+    @Override
+    public void saveData(Chatroom new_chatroom) {
+        chatroom_storage.writefile(reader.ToString(new_chatroom));
     }
 }

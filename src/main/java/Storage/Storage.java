@@ -1,8 +1,13 @@
 package Storage;
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Storage {
     String file_name;
@@ -24,6 +29,16 @@ public class Storage {
         } catch (IOException e){
             e.printStackTrace();
             return null;
+        }
+    }
+
+    ArrayList<String> getfiles() {
+        try {
+            Stream<Path> result = Files.walk(Paths.get(file_name));
+            return (ArrayList<String>) result.filter(Files::isRegularFile).map(x -> x.toString().replaceFirst(".txt", "").replaceFirst("storage/chatrooms/", "")).collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 }
