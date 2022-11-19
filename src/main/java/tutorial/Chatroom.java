@@ -10,7 +10,6 @@ public class Chatroom {
         this.name = name;
         this.user_list = new ArrayList<>();
         this.admin_name = admin_name;
-
         this.user_list.add(admin_name);
     }
 
