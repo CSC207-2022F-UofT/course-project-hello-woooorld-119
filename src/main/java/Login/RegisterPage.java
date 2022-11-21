@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class RegisterPage implements ActionListener {
     JFrame frame = new JFrame();
     JButton registerButton = new JButton("Register");
+    JButton loginButton = new JButton("Sign In");
     JTextField display_name = new JTextField();
     JTextField userId = new JTextField();
     JPasswordField userPassword1 = new JPasswordField();
@@ -36,10 +37,13 @@ public class RegisterPage implements ActionListener {
 
         registerButton.setBounds(125, 300, 100, 25);
         registerButton.addActionListener(this);
+        loginButton.setBounds(225, 300, 100, 25);
+        loginButton.addActionListener(this);
 
         frame.add(display_name);
         frame.add(displayNameLabel);
         frame.add(registerButton);
+        frame.add(loginButton);
         frame.add(userId);
         frame.add(userPassword1);
         frame.add(userPassword2);
@@ -81,6 +85,10 @@ public class RegisterPage implements ActionListener {
                 frame.dispose();
                 LoginPage loginPage = new LoginPage();
             }
+        }
+        else{
+            frame.dispose();
+            LoginPage newLoginPage = new LoginPage();
         }
 
     }
