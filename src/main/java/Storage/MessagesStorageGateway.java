@@ -1,5 +1,5 @@
 package Storage;
 
-public class MessagesStorageGateway {
+public interface MessagesStorageGateway {
 
 }

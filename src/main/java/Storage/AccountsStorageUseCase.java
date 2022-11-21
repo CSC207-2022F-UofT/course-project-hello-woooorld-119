@@ -2,6 +2,7 @@ package Storage;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class AccountsStorageUseCase implements AccountsStorageGateway {
     Storage accounts_storage;
@@ -23,7 +24,7 @@ public class AccountsStorageUseCase implements AccountsStorageGateway {
     public boolean passwordExists(String username, String password) {
         // username must exist
         Map<String, String> info = (Map<String, String>) this.reader.Read(accounts_storage.readfile(), Map.class);
-        return info.get(username) == password;
+        return Objects.equals(info.get(username), password);
     }
 
     @Override
