@@ -53,13 +53,6 @@ public class Chatroom {
         // set up the Chatroom with all the messages from ChatroomStorage //
     }
 
-    public void addMessage(String message) throws IOException {
-        try (FileWriter f = new FileWriter("storage/messages/" + this.name + ".txt", true);
-             BufferedWriter b = new BufferedWriter(f);
-             PrintWriter p = new PrintWriter(b);) {
-            p.println(message);
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
-    }
+
+
 }
