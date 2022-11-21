@@ -33,14 +33,20 @@ public class User {
 
     }
 
-
-    public int getID(){
-        return this.id;
-    }
-
-    public String getName() {
+    public String get_user_display_name() {
+        // returns the display name of user
         return this.displayName;
     }
+
+    public ArrayList<Chatroom> get_user_chatroom() {
+        //returns the chatroom user is in as a list
+        return this.listofChatroom;
+    }
+    public ArrayList<User> get_user_friends(){
+        //returns the friends of this user
+        return this.friendsList;
+        }
+
     public void addUserToChatroom(Chatroom group){
 
     }
