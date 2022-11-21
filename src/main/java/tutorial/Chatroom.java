@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+//test
 
 public class Chatroom {
     private String name;
@@ -33,7 +34,7 @@ public class Chatroom {
     }
 
 
-    public static String getName(){
+    public String getName(){
         return this.name;
     }
     public void setName(String new_name){
