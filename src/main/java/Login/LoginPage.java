@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class LoginPage implements ActionListener {
-    //HashMap<String, String> loginInfo = new HashMap<String, String>();
     JFrame frame = new JFrame();
     JButton loginButton = new JButton("Login");
     JButton registerButton = new JButton("Register");
