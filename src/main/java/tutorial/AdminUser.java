@@ -8,8 +8,6 @@ public class AdminUser extends User {
     }
 
     public void removeUser(Chatroom chatroom, User person){
-        // chatroom function ??
-        chatroom.RemoveUser(person);
 
     }
 
