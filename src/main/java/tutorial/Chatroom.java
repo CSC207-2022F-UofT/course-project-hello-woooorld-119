@@ -15,9 +15,7 @@ public class Chatroom {
 
     public void AddUser(String username){
         this.user_list.add(username);
-
     }
-
     public void RemoveUser(String username){
         this.user_list.remove(username);
         if (user_list.size() == 0){
@@ -25,11 +23,13 @@ public class Chatroom {
         }
 
     }
-
-
+    public ArrayList<String> getUserList(){
+        return this.user_list;
+    }
     public String getName(){
         return this.name;
     }
+
     public void setName(String new_name){
         this.name = new_name;
     }
