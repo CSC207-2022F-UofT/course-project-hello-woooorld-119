@@ -38,8 +38,18 @@ SAM
 2.
 
 EVAN
-1. 
-2.
+I have made a pull request https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22 
+(2 user intefaces #22), even though it hasn't gone through, but I have the changes in file UIinsdeChatroom
+and UIoutsideChatroom in 2-user-interfaces and both are pretty much complete and runnable.(since being able to see the output
+are quite important for designing the User interfaces. You can pull the files from branches 2-user-interfaces and run!, not from main). 
+I have set it up and made it runnable in UIoutsideChatroom's main, so that clicking button named tut119 will run UIinsideChatroom
+and both should pop-up a frame with buttons and chat_window. for now only and create chatroom and enter chatroom button is clickable
+and send message button inside chatroom.
+
+The pull request I made some review would be the same pull request as above, where I have discussed the problem with Jeff 
+of having data interfering the terminal or UI in Sam's work, which allowed me to actually realize the problem in the code.
+Sam actually have the data reading and outputting in terminal which go against of our design of the project. While now it is fixed,
+it made us clear of how we actually want our UI designed. 
 
 TC
 1. 
