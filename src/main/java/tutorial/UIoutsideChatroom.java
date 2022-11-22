@@ -15,25 +15,27 @@ import tutorial.UIPrivateProfile;
 public class UIoutsideChatroom {
     private final User user;
     private JFrame frame;
-    private final Integer frame_length = 900;
-    private final Integer frame_width = 900;
-    private final Integer button_width = 900;
-    private final Integer button_length = 900;
+    private final Integer button_width = 100;
+    private final Integer button_length = 100;
 
     public UIoutsideChatroom(User user){
         this.user = user;
     }
     public void display(){
-        //displays the information to GUI
-        this.frame.setSize(frame_width, frame_length);
-        display_friend_lst();
-        display_chatrooms();
-        create_chatroom_button();
-        enter_public_profile_button(this.user);
-        enter_private_profile_button(this.user);
+        //displays the window
+        this.frame = new JFrame();
+        this.frame.setSize(900, 900); //setting the size of the window
+        this.frame.setTitle("Diskawd"); //setting the name for the title of the window
+        display_friend_lst(); // calls to display public profile of this user's friends
+        display_chatrooms(); // calls to display buttons to enter chatrooms that this user is in
+        create_chatroom_button(); //calls to create a button to create chatroom
+        enter_public_profile_button(this.user); //creates this user's public profile and allow edit
+        enter_private_profile_button(this.user); //creates this user's private profile and allow edit
+        this.frame.setLayout(null);//using no layout managers
+        this.frame.setVisible(true);//making the frame visible
     }
 
-    public void create_enter_chatroom_button(Chatroom chatroom){
+    public void create_enter_chatroom_button(Chatroom chatroom, User user){
         //create a GUI button to enter this chatroom
         JButton b = new JButton(chatroom.getName());//creating instance of JButton
         b.setBounds(200,100,button_width, button_length);//x axis, y axis, width, height
@@ -42,7 +44,7 @@ public class UIoutsideChatroom {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIinsideChatroom obj = new UIinsideChatroom();
+                UIinsideChatroom obj = new UIinsideChatroom(chatroom, user);
                 obj.display_current_chatroom(); // goes to the UI insidechatroom page
             }
         });
@@ -52,7 +54,7 @@ public class UIoutsideChatroom {
         //displays the chatroom with their icon picture
         UIoutsidechatroom_backend obj = new UIoutsidechatroom_backend();
         for (Chatroom chatroom: obj.getchatroomlst(this.user)){
-            this.create_enter_chatroom_button(chatroom);
+            this.create_enter_chatroom_button(chatroom, this.user);
         }
     }
 
@@ -76,6 +78,7 @@ public class UIoutsideChatroom {
             Chatroom chatroom = new Chatroom(display_name, this.user.get_user_display_name());//creates the chatroom
             ChatroomStorageGateway chatroom_storage = (ChatroomStorageGateway) new ChatroomStorageUsecase(display_name);
             chatroom_storage.saveData(chatroom);
+            this.create_enter_chatroom_button(chatroom, this.user);
         });
 
     }
@@ -88,7 +91,7 @@ public class UIoutsideChatroom {
         b.setEnabled(true);
         b.addActionListener(e -> {
             UIPublicProfile obj = new UIPublicProfile(user);
-            obj.display(); // goes to the UI insidechatroom page
+            obj.display(); // goes to the UI profileprofile page for other user, not editable
         });
     }
 
@@ -100,7 +103,7 @@ public class UIoutsideChatroom {
         b.setEnabled(true);
         b.addActionListener(e -> {
             UIPublicProfile obj = new UIPublicProfile(user);
-            obj.display(); // goes to the UI insidechatroom page
+            obj.display(); // goes to the UI publicprofile page
         });
     }
 
@@ -114,12 +117,22 @@ public class UIoutsideChatroom {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UIPrivateProfile obj = new UIPrivateProfile();
-                obj.display(); // goes to the UI insidechatroom page
+                obj.display(); // goes to the UI privateprofile page
             }
         });
     }
 
     public static void main(String[] args) {
+        User evan = new User("evan", "ec105", "ec105");
+        User Jeff = new User("Jeff", "Jeff", "Jeff");
+        Chatroom tut119 = new Chatroom("tut119", "evan");
+        evan.addUserToFriendList(Jeff);
+        tut119.AddUser(evan.getUsername());
+        evan.addUserToChatroom(tut119);
+        UIoutsideChatroom a = new UIoutsideChatroom(evan);
+        a.display();
+
+
     }
 
 }

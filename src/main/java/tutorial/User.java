@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 
 public class User {
     private String displayName;
-    private final int id;
     private ArrayList<Chatroom> listofChatroom;
     private ArrayList<User> friendsList;
     private String username;
@@ -22,9 +21,8 @@ public class User {
      * @param id the User's id as assigned when the User is created
      */
 
-    public User(String displayName, int id, String username, String password) {
+    public User(String displayName, String username, String password) {
         this.displayName = displayName;
-        this.id = id;
         this.listofChatroom = new ArrayList<Chatroom>();
         this.friendsList = new ArrayList<User>();
         this.username = username; //need to determine username and ensuring it does not already exist in the storage//
@@ -48,11 +46,11 @@ public class User {
         }
 
     public void addUserToChatroom(Chatroom group){
-
+        this.listofChatroom.add(group);
     }
 
     public void addUserToFriendList(User friend){
-
+        this.friendsList.add(friend);
     }
 
     public void removeUserFromFriendList(User friend){

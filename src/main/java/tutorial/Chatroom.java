@@ -16,6 +16,7 @@ public class Chatroom {
     public void AddUser(String username){
         this.user_list.add(username);
 
+
     }
 
     public void RemoveUser(String username){
