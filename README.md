@@ -26,6 +26,7 @@ https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
 - comment and approval under files changed related to UI implementing a way for a Chatroom to be hidden once number of users becomes 0 and clarifications 
 regarding the structure of the Chatroom class
 
+Note: I will be writing test cases for milestone 5 with Isabel
 
 JEFF
 1. 
