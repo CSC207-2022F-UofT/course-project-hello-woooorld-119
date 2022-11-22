@@ -8,8 +8,9 @@ import java.sql.Timestamp;
 
 public class User {
     private String displayName;
-    private ArrayList<Chatroom> listofChatroom;
-    private ArrayList<User> friendsList;
+    private final int id;
+    private ArrayList<String> listofChatroom;
+    private ArrayList<String> friendsList;
     private String username;
     private String password;
     private ArrayList<Timestamp> loginTracker;
@@ -19,60 +20,46 @@ public class User {
      *
      * @param displayName the User's name as seen by other Users
      * @param id the User's id as assigned when the User is created
+     * @param username the User's username only accessible by the User themself
      */
 
-    public User(String displayName, String username, String password) {
+    public User(String displayName, int id, String username, String password) {
         this.displayName = displayName;
-        this.listofChatroom = new ArrayList<Chatroom>();
-        this.friendsList = new ArrayList<User>();
-        this.username = username; //need to determine username and ensuring it does not already exist in the storage//
+        this.id = id; //need to determine how we will be creating id and ensuring it does not already exist //
+        this.username = username;
+        this.listofChatroom = new ArrayList<String>();
+        this.friendsList = new ArrayList<String>();
         this.password = password;
         this.loginTracker = new ArrayList<>();
-
     }
 
-    public String get_user_display_name() {
-        // returns the display name of user
-        return this.displayName;
+    public void addUserToChatroom(String chatroom_name){
+        // chatroom.adduser()
+        this.listofChatroom.add(chatroom_name);
     }
 
-    public ArrayList<Chatroom> get_user_chatroom() {
-        //returns the chatroom user is in as a list
-        return this.listofChatroom;
-    }
-    public ArrayList<User> get_user_friends(){
-        //returns the friends of this user
-        return this.friendsList;
-        }
-
-    public void addUserToChatroom(Chatroom group){
-        this.listofChatroom.add(group);
+    public void addUserToFriendList(String friend_username){
+        this.friendsList.add(friend_username);
     }
 
-    public void addUserToFriendList(User friend){
-        this.friendsList.add(friend);
-    }
-
-    public void removeUserFromFriendList(User friend){
-
-    }
-
-    // Setter username and getter username
-
-    public void setUsername(String username){
-        this.username = username;
-    }
-
-    public String getUsername(){
-        return username;
+    public void removeUserFromFriendList(String friend_username){
+        this.friendsList.remove(friend_username);
     }
 
     public void setPassword(String password){
         this.password = password;
     }
 
-    public String getPassword(){
-        return password;
+    public String getUsername(){
+        return this.username;
+    }
+
+    public ArrayList<String> getListofChatroom(){
+        return this.listofChatroom;
+    }
+
+    public ArrayList<String> getFriendsList(){
+        return this.friendsList;
     }
 
     // Setter of loginTracker and getter of loginTacker
@@ -91,7 +78,3 @@ public class User {
         loginTracker.add(timing);
     }
 }
-
-
-
-
