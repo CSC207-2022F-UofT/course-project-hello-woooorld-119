@@ -1,28 +1,47 @@
-//package tutorial;
-//
-//import java.util.ArrayList;
-//
-//public class DirectMessage{
-//    private int id;
-//
-//    private String name;
-//
-//    private ArrayList<User> UserList;
-//
-//    public DirectMessage(String name, int id, AdminUser admin) {
-//        this.name = name;
-//        this.id = id;
-//        this.admin = null;
-//    }
-//    public void AddUser(User username){
-//        this.UserList.add(username);
-//    }
+package tutorial;
 
-//    public void DM(User user1, User user2){
-//        this.AddUser(user1);
-//        this.AddUser(user2);
-//        this.admin = new AdminUser(user1.getName(), user1.getID());
-//    }
-//}
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import Messages.Message;
+import Storage.ChatroomStorageGateway;
+
+
+public class DirectMessage extends Chatroom{
+
+    public DirectMessage(String name, String admin_name) {
+        super(name, admin_name);
+    }
+
+    public int num_of_users(){
+        return super.getUserList().size();
+    }
+
+    public void DM(String user2) throws Exception {
+        if(this.num_of_users() == 1){
+            super.AddUser(user2);
+            super.setName(user2);
+        }else {
+            throw new Exception("Invalid direct message format");
+        }
+    }
+
+
+
+    public void nickName(String nickname){
+        super.setName(nickname);
+    }
+
+    public void addMessage(String message) throws IOException {
+        try (FileWriter f = new FileWriter("storage/messages/" + this.name + ".txt", true);
+             BufferedWriter b = new BufferedWriter(f);
+             PrintWriter p = new PrintWriter(b);) {
+            p.println(message);
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
+}
 
 
