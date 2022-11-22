@@ -6,14 +6,13 @@ import java.util.Arrays;
 public class Message {
     String to;
     String from;
-    ArrayList<ArrayList<String>> texts; // [[msg, time]]
+    String text;
+    String time;
 
-    public Message(String from, String to) {
+    public Message(String from, String to, String text, String time) {
         this.to = to;
         this.from = from;
-    }
-
-    public void addMessage(String msg, String timestamp) {
-        this.texts.add(new ArrayList<String>(Arrays.asList(msg, timestamp)));
+        this.text = text;
+        this.time = time;
     }
 }

@@ -92,9 +92,8 @@ public class User {
     public void updateLoginTracker(Timestamp timing){
         loginTracker.add(timing);
     }
-
 }
 
 
-}
+
 
