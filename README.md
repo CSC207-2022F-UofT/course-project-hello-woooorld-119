@@ -30,8 +30,11 @@ regarding the structure of the Chatroom class
 Note: I will be writing test cases for milestone 5 with Isabel
 
 JEFF
-1. 
-2.
+1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/11
+This is my biggest pull request when I nearly completed the backbone of the storage system. I took inspiration from the data access we learned from lecture. Although no test cases were uploaded, I tested this on my own and the test cases will be uploaded by milestone 5.
+
+2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/12
+I actively gave feedback and advice through multiple changes in this pull request.
 
 SAM
 1. 
