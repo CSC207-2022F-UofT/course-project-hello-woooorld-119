@@ -55,5 +55,7 @@ Sam actually have the data reading and outputting in terminal which go against o
 it made us clear of how we actually want our UI designed.
 
 TC
-1. 
-2. 
+1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/23
+In this pull request, I have implemented the ability to create direct message chatrooms among users. Throughout the writing process of this class, I used Discord to give me a picture on what kind of functions would be beneficial or are needed while direct messaging people. 
+2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/16
+In this pull request, my teammate reminded me that I was heading toward the wrong direction because addmessage shouldn't be an entity. However, I wasn't really sure how to fix it at the start. However, after asking for a clearification during the tutorial, I unserstood what was the issue and got it sorted out. 
