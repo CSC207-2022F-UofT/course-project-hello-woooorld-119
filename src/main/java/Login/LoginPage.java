@@ -1,9 +1,9 @@
 package Login;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 public class LoginPage implements ActionListener {
     JFrame frame = new JFrame();
@@ -14,6 +14,7 @@ public class LoginPage implements ActionListener {
     JLabel userIdLabel = new JLabel("Username:");
     JLabel userPasswordLabel = new JLabel("Password:");
     JLabel messageLabel = new JLabel();
+    JLabel titleLabel = new JLabel("Login Page");
 
     public LoginPage(){
         //this.loginInfo = loginInfo;
@@ -33,6 +34,11 @@ public class LoginPage implements ActionListener {
         registerButton.setBounds(225, 200, 100, 25);
         registerButton.addActionListener(this);
 
+        titleLabel.setBounds(175, 50, 75, 25);
+
+
+
+        frame.add(titleLabel);
         frame.add(registerButton);
         frame.add(loginButton);
         frame.add(userId);
@@ -42,6 +48,7 @@ public class LoginPage implements ActionListener {
         frame.add(messageLabel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
+        //frame.pack();
         frame.setLayout(null);
         frame.setVisible(true);
     }

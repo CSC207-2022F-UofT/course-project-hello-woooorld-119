@@ -15,9 +15,11 @@ public class RegisterPage implements ActionListener {
     JPasswordField userPassword2 = new JPasswordField();
     JLabel userIdLabel = new JLabel("Username:");
     JLabel userPasswordLabel1 = new JLabel("Password:");
-    JLabel userPasswordLabel2 = new JLabel("Re-enter Password:");
+    JLabel userPasswordLabel2 = new JLabel("Re-enter");
+    JLabel userPasswordLabel2con = new JLabel("Password:");
     JLabel displayNameLabel = new JLabel("Name");
     JLabel messageLabel = new JLabel();
+    JLabel title_label = new JLabel("Create Account");
 
     public RegisterPage(){
         //this.loginInfo = loginInfo;
@@ -25,6 +27,7 @@ public class RegisterPage implements ActionListener {
         userIdLabel.setBounds(50, 100, 75, 25);
         userPasswordLabel1.setBounds(50, 150, 75, 25);
         userPasswordLabel2.setBounds(50, 200, 75, 25);
+        userPasswordLabel2con.setBounds(50, 215, 75, 25);
         displayNameLabel.setBounds(50, 250, 75, 25);
 
         messageLabel.setBounds(50, 350, 250, 35);
@@ -40,6 +43,9 @@ public class RegisterPage implements ActionListener {
         loginButton.setBounds(225, 300, 100, 25);
         loginButton.addActionListener(this);
 
+        title_label.setBounds(175, 50, 150, 25);
+
+        frame.add(title_label);
         frame.add(display_name);
         frame.add(displayNameLabel);
         frame.add(registerButton);
@@ -50,6 +56,7 @@ public class RegisterPage implements ActionListener {
         frame.add(userIdLabel);
         frame.add(userPasswordLabel1);
         frame.add(userPasswordLabel2);
+        frame.add(userPasswordLabel2con);
         frame.add(messageLabel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
