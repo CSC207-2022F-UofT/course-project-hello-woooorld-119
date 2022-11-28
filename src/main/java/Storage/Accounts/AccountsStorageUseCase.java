@@ -5,6 +5,8 @@ import Storage.Storage;
 import java.util.Map;
 import java.util.Objects;
 
+import Storage.Reader;
+
 public class AccountsStorageUseCase implements AccountsStorageGateway {
     Storage accounts_storage;
     Reader reader;
