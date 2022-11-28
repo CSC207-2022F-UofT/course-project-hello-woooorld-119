@@ -1,4 +1,4 @@
-package Storage;
+package Storage.Accounts;
 //use case layer
 
 public interface AccountsStorageGateway {

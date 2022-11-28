@@ -1,6 +1,7 @@
-package Storage;
+package Storage.Accounts;
 
-import java.util.HashMap;
+import Storage.Storage;
+
 import java.util.Map;
 import java.util.Objects;
 

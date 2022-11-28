@@ -1,6 +1,8 @@
-package Storage;
+package Storage.Users;
 
-public class UserStorage extends Storage{
+import Storage.Storage;
+
+public class UserStorage extends Storage {
     public UserStorage(String name) {
         super("storage/profiles/" + name + ".txt");
     }

@@ -1,8 +1,10 @@
-package Storage;
+package Storage.Accounts;
 
-public class ChatroomStorage extends Storage {
-    public ChatroomStorage(String name) {
-        super("storage/chatrooms/" + name + ".txt");
+import Storage.Storage;
+
+public class AccountsStorage extends Storage {
+    public AccountsStorage() {
+        super("storage/accounts.txt");
     }
 
     @Override

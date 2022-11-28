@@ -1,4 +1,4 @@
-package Storage;
+package Storage.Chatrooms;
 
 import tutorial.Chatroom;
 

@@ -1,8 +1,9 @@
-package Storage;
+package Storage.Users;
 
+import Storage.Storage;
 import tutorial.User;
 
-import java.util.Map;
+import Storage.Reader;
 
 public class UserStorageUseCase implements UserStorageGateway{
     Storage userStorage;
