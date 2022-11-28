@@ -5,22 +5,22 @@ import tutorial.User;
 import java.util.Map;
 
 public class UserStorageUseCase implements UserStorageGateway{
-    Storage user_storage;
+    Storage userStorage;
     Reader reader;
 
     public UserStorageUseCase(String username) {
-        this.user_storage = new UserStorage(username);
+        this.userStorage = new UserStorage(username);
         this.reader = new Reader();
     }
 
     @Override
     public User getData() {
-        User info = (User) reader.Read(user_storage.readfile(), User.class);
+        User info = (User) reader.Read(userStorage.readfile(), User.class);
         return info;
     }
 
     @Override
-    public void saveData(User new_user) {
-        user_storage.writefile(reader.ToString(new_user));
+    public void saveData(User newUser) {
+        userStorage.writefile(reader.ToString(newUser));
     }
 }

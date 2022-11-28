@@ -5,19 +5,19 @@ import tutorial.Chatroom;
 import java.util.ArrayList;
 
 public class ChatroomStorageJ {
-    Storage chatroom_storage;
+    Storage chatroomStorage;
     public ChatroomStorageJ() {
-        this.chatroom_storage = new Storage("storage/chatrooms");
+        this.chatroomStorage = new Storage("storage/chatrooms");
     }
 
     public ArrayList<Chatroom> getChatrooms() {
-        ArrayList<String> chatroom_names = chatroom_storage.getfiles();
+        ArrayList<String> chatroomNames = chatroomStorage.getfiles();
 
-        System.out.println(chatroom_names);
+        System.out.println(chatroomNames);
 
         ArrayList<Chatroom> output = new ArrayList<Chatroom>();
 
-        for (String s: chatroom_names) {
+        for (String s: chatroomNames) {
             output.add(new ChatroomStorageUsecase(s).getData());
         }
 
