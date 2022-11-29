@@ -2,6 +2,7 @@ package tutorial;
 
 import Messages.Message;
 import Storage.ChatroomStorageGateway;
+import Storage.ChatroomStorageUsecase;
 
 import java.util.ArrayList;
 
@@ -13,14 +14,29 @@ public class Chatroom {
     private ArrayList<Message> message_list; // list of messages in the chatroom
 
     private ChatroomStorageGateway gateway; // interface to save chatroom
-    public Chatroom(String name, String admin_name, ChatroomStorageGateway gateway) {
+    public Chatroom(String name, String admin_name) {
         this.name = name;
         this.user_list = new ArrayList<>();
         this.admin_name = admin_name;
         this.user_list.add(admin_name);
         this.message_list = new ArrayList<>();
-        this.gateway = gateway;
+        this.gateway = new ChatroomStorageGateway() {
+
+            @Override
+            public Chatroom getData() {
+                ChatroomStorageGateway chatroom_storage = (ChatroomStorageGateway) new ChatroomStorageUsecase(name);
+                return chatroom_storage.getData();
+            }
+            @Override
+            public void saveData(Chatroom new_chatroom) {
+
+            }
+        };
         this.gateway.saveData(this);
+    }
+
+    public ArrayList<String> getUserLst(){
+        return this.user_list;
     }
 
     public void AddUser(String username){

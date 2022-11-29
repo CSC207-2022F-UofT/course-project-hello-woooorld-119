@@ -11,7 +11,7 @@ public class UIinsidechatroom_backend{
         //initlaizer
     }
     public ArrayList<String> getmember_lst(Chatroom chatroom){
-        return chatroom.get_user_lst();
+        return chatroom.getUserLst();
         //return the list of the users in this chatroom
 
     }

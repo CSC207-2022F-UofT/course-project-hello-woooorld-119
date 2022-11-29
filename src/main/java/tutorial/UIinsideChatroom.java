@@ -33,7 +33,7 @@ public class UIinsideChatroom {
         this.frame.add(this.chat_window);
 
         display_member_lst(); //display its member lst
-        send_message(this.chat_window, this.user.get_user_display_name()); // setups the send message textbox and message button
+        send_message(this.chat_window, this.user.getUserDisplayName()); // setups the send message textbox and message button
         this.frame.setLayout(null);//using no layout managers
         this.frame.setVisible(true);//making the frame visible
     }
