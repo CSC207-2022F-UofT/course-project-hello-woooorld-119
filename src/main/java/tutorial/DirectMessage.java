@@ -4,44 +4,39 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import Messages.Message;
+import java.util.ArrayList;
+import Storage.ChatroomStorageUsecase;
+import tutorial.Chatroom;
+import tutorial.User;
+import Storage.ChatroomStorage;
+
 import Storage.ChatroomStorageGateway;
 
+import javax.swing.*;
 
-public class DirectMessage extends Chatroom{
+public class DirectMessage{
 
-    public DirectMessage(String name, String admin_name) {
-        super(name, admin_name);
+    private User adminuser;
+    private User user;
+    private ArrayList<User> userlist;
+
+    public DirectMessage(User adminuser, User user) {
+        this.adminuser = adminuser;
+        this.user = user;
     }
 
-    public int num_of_users(){
-        return super.getUserList().size();
+    public void adduser(){
+        this.userlist.add(this.adminuser);
+        this.userlist.add(this.user);
     }
 
-    public void DM(String user2) throws Exception {
-        if(this.num_of_users() == 1){
-            super.AddUser(user2);
-            super.setName(user2);
-        }else {
-            throw new Exception("Invalid direct message format");
-        }
+    public void getdmname(){
+        String display_name = JOptionPane.showInputDialog("Enter nickname for the user");
+        Chatroom chatroom = new Chatroom(display_name, this.adminuser.getUserDisplayName());
+        ChatroomStorageGateway chatroom_storage = (ChatroomStorageGateway) new ChatroomStorageUsecase(display_name);
+        chatroom_storage.saveData(chatroom);
     }
 
-
-
-    public void nickName(String nickname){
-        super.setName(nickname);
-    }
-
-    public void addMessage(String message) throws IOException {
-        try (FileWriter f = new FileWriter("storage/messages/" + this.name + ".txt", true);
-             BufferedWriter b = new BufferedWriter(f);
-             PrintWriter p = new PrintWriter(b);) {
-            p.println(message);
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
-    }
 }
 
 
