@@ -34,6 +34,10 @@ public class User {
         return this.displayName;
     }
 
+    public void setDisplayName(String newName){
+        this.displayName = newName;
+    }
+
     public void addUserToChatroom(Chatroom chatroom_name){
         // chatroom.adduser()
         this.listofChatroom.add(chatroom_name);

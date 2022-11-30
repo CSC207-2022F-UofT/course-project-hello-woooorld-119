@@ -1,6 +1,7 @@
 package Login;
 
 import Storage.AccountsStorageUseCase;
+import Storage.UserStorageUseCase;
 import tutorial.User;
 
 import java.util.Objects;
@@ -32,6 +33,8 @@ public class RegisterUseCase {
     //Creates the user account with the specified username, password and display name.
     public User createUser(String displayName, String username, String password){
         User user = new User(displayName, username, password);
+        UserStorageUseCase userStorage = new UserStorageUseCase(username);
+        userStorage.saveData(user);
         return user;
     }
 

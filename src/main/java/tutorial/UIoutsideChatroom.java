@@ -131,7 +131,7 @@ public class UIoutsideChatroom {
         b.setEnabled(true);
         b.setPreferredSize(new Dimension(75, 75));
         b.addActionListener(e -> {
-            UIPublicProfile obj = new UIPublicProfile(user);
+            UIPublicProfile obj = new UIPublicProfile(user, user);
             obj.display(); // goes to the UI profileprofile page for other user, not editable
         });
         return b;
@@ -144,7 +144,7 @@ public class UIoutsideChatroom {
         this.frame.add(b);//adding button in JFrame
         b.setEnabled(true);
         b.addActionListener(e -> {
-            UIPublicProfile obj = new UIPublicProfile(user);
+            UIPublicProfile obj = new UIPublicProfile(user, user);
             obj.display(); // goes to the UI publicprofile page
         });
     }
@@ -155,12 +155,9 @@ public class UIoutsideChatroom {
         b.setBounds(370,600,250, button_length);//x axis, y axis, width, height
         this.frame.add(b);//adding button in JFrame
         b.setEnabled(true);
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIPrivateProfile obj = new UIPrivateProfile();
+        b.addActionListener(e -> {
+                UIPrivateProfile obj = new UIPrivateProfile(this.user);
                 obj.display(); // goes to the UI privateprofile page
-            }
         });
     }
 

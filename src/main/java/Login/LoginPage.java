@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+import tutorial.*;
 
 public class LoginPage implements ActionListener {
     JFrame frame = new JFrame();
@@ -36,8 +38,12 @@ public class LoginPage implements ActionListener {
 
         titleLabel.setBounds(175, 50, 75, 25);
 
+        //URL image_url = LoginPage.class.getClassLoader().getResource("logo.png");
+        //ImageIcon image = new ImageIcon(image_url);
+        //JLabel imageLabel = new JLabel(image);
 
 
+        //frame.add(imageLabel);
         frame.add(titleLabel);
         frame.add(registerButton);
         frame.add(loginButton);
@@ -65,7 +71,10 @@ public class LoginPage implements ActionListener {
                 messageLabel.setForeground(Color.green);
                 messageLabel.setText("Login successful");
                 frame.dispose();
-                WelcomePage welcomePage = new WelcomePage();
+                User user = new User("evan", "evan", "evan");
+                UIoutsideChatroom obj = new UIoutsideChatroom(user);
+                obj.display();
+                //WelcomePage welcomePage = new WelcomePage();
             }
             else if (username.equals("") || password.equals("")){
                 messageLabel.setForeground(Color.red);

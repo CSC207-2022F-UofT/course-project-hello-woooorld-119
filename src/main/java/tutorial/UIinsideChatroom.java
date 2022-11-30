@@ -135,7 +135,7 @@ public class UIinsideChatroom {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIPublicProfile obj = new UIPublicProfile(user);
+                UIPublicProfile obj = new UIPublicProfile(user, user);
                 obj.display(); // goes to the UI public profile page
             }
         });

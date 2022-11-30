@@ -1,6 +1,9 @@
 package User;
 
+import tutorial.User;
+
 public class PublicProfile implements PublicProfileInterface {
+
     @Override
     public void setProfilePic(String path) {
 
