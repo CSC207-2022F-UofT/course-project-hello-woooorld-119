@@ -30,12 +30,14 @@ public class DirectMessage{
         this.userlist.add(this.user);
     }
 
-    public void getdmname(){
+    public Chatroom getchatroomname(){
         String display_name = JOptionPane.showInputDialog("Enter nickname for the user");
         Chatroom chatroom = new Chatroom(display_name, this.adminuser.getUserDisplayName());
         ChatroomStorageGateway chatroom_storage = (ChatroomStorageGateway) new ChatroomStorageUsecase(display_name);
         chatroom_storage.saveData(chatroom);
+        return chatroom;
     }
+
 
 }
 
