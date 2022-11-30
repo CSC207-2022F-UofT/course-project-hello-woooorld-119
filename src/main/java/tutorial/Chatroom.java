@@ -4,6 +4,7 @@ import Messages.Message;
 import Storage.ChatroomStorageGateway;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Chatroom {
     private String name;
@@ -23,16 +24,22 @@ public class Chatroom {
         this.gateway.saveData(this);
     }
 
-    public void AddUser(User newUser){
+    public void addUser(User newUser){
         this.userList.add(newUser);
         this.gateway.saveData(this);
     }
 
-    public void RemoveUser(User toBeRemoved){
+    public void removeUser(User toBeRemoved){
+        if (Objects.equals(toBeRemoved.getUsername(), this.getAdmin().getUsername())){
+            this.admin = null;
+        }
         this.userList.remove(toBeRemoved);
         this.gateway.saveData(this);
     }
 
+    public ArrayList<User> getUserList(){
+        return this.userList;
+    }
     public String getName(){
         return this.name;
     }
