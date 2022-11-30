@@ -3,6 +3,7 @@ import Login.LoginMain;
 import Login.LoginPage;
 import Storage.ChatroomStorage;
 import Storage.ChatroomStorageGateway;
+import Storage.ChatroomStorageJ;
 import Storage.ChatroomStorageUsecase;
 import tutorial.Chatroom;
 import tutorial.User;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import tutorial.UIPublicProfile;
 import tutorial.UIPrivateProfile;
+import tutorial.DirectMessage;
 
 public class UIoutsideChatroom {
     private final User user;
@@ -37,6 +39,45 @@ public class UIoutsideChatroom {
         this.frame.setLayout(null);//using no layout managers
         this.frame.setVisible(true);//making the frame visible
         this.create_sign_out_button(this.frame);
+        this.create_dm_button();
+        this.create_join_chatroom_button();
+    }
+
+    public void create_dm_button(){
+        JButton b = new JButton();
+        b.setText("DirectMessage with friend");
+        b.setBounds(400, 50, 200,100);
+        b.setEnabled(true);
+        this.frame.add(b);
+        b.addActionListener(e -> {
+            String username = JOptionPane.showInputDialog("Enter username name");
+            User dmuser;
+            for (User user: this.user.getFriendsList()) {
+                if (user.getUserDisplayName().equals(username)){
+                    dmuser = user;
+                    DirectMessage obj = new DirectMessage(dmuser, this.user);
+                }
+            }
+        });
+    }
+
+    public void create_join_chatroom_button(){
+        JMenuBar b = new JMenuBar();
+        JMenu room_lst = new JMenu();
+        b.setBounds(275, 50, 100 ,100);
+        room_lst.setText("join chatroom");
+        ChatroomStorageJ obj = new ChatroomStorageJ();
+        b.add(room_lst);
+        this.frame.add(b);
+        System.out.println(obj.getChatrooms());
+        for (Chatroom room: obj.getChatrooms()){
+            JMenuItem item = new JMenuItem(room.getName());
+                room_lst.add(item);
+                item.addActionListener(e -> {
+                    this.user.addUserToChatroom(room);
+                    room.AddUser(this.user.getUserDisplayName());
+                });
+        }
     }
 
     public JButton create_enter_chatroom_button(Chatroom chatroom, User user){
@@ -166,6 +207,8 @@ public class UIoutsideChatroom {
         User Jeff = new User("Jeff", "Jeff", "Jeff");
         User tc = new User("tc", "tc", "tc1");
         Chatroom tut119 = new Chatroom("tut119", "evan");
+        ChatroomStorageUsecase obj = new ChatroomStorageUsecase("tut119");
+        obj.saveData(tut119);
         evan.addUserToFriendList(Jeff);
         evan.addUserToChatroom(tut119);
         Chatroom tut119_2 = new Chatroom("tut119_2", "evan");

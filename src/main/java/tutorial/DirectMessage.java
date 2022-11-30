@@ -1,28 +1,31 @@
-//package tutorial;
-//
-//import java.util.ArrayList;
-//
-//public class DirectMessage{
-//    private int id;
-//
-//    private String name;
-//
-//    private ArrayList<User> UserList;
-//
-//    public DirectMessage(String name, int id, AdminUser admin) {
-//        this.name = name;
-//        this.id = id;
-//        this.admin = null;
-//    }
-//    public void AddUser(User username){
-//        this.UserList.add(username);
-//    }
+package tutorial;
 
-//    public void DM(User user1, User user2){
-//        this.AddUser(user1);
-//        this.AddUser(user2);
-//        this.admin = new AdminUser(user1.getName(), user1.getID());
-//    }
-//}
+import java.util.ArrayList;
+import tutorial.User;
+
+public class DirectMessage{
+    private int id;
+
+    private String name;
+    private User adminuser;
+    private User user;
+
+    private ArrayList<User> UserList;
+
+    public DirectMessage(User adminuser, User user) {
+        this.adminuser = adminuser;
+        this.user = user;
+    }
+
+    //create a chatroom with two user, make admin user the admin, store it in Storage using storage gateway.
+    //Joptionpane to input from user
+    public void AddUser(User username){
+        this.UserList.add(username);
+    }
+
+    public void DM(){
+
+    }
+}
 
 

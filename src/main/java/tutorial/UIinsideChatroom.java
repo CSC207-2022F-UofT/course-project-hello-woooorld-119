@@ -33,7 +33,9 @@ public class UIinsideChatroom {
 
         this.chat_window = new JTextArea(""); //sets up the text window in chatroom window
         this.chat_window.setBounds(100, 50, 500, 500);
+        this.setup_chatwindow_message(this.chat_window);
         this.frame.add(this.chat_window);
+
 
         display_member_lst(); //display its member lst
         send_message(this.chat_window, this.user.getUserDisplayName()); // setups the send message textbox and message button
@@ -41,6 +43,12 @@ public class UIinsideChatroom {
         this.frame.setVisible(true);//making the frame visible
         this.create_add_friend_menu(this.user);
         this.create_invite_friend_memu();
+    }
+
+    public void setup_chatwindow_message(JTextArea chat_window){
+        for (String txt: this.chatroom.getMessage()) {
+            chat_window.setText(txt);
+        }
     }
 
     public void create_add_friend_menu(User user){
@@ -113,18 +121,15 @@ public class UIinsideChatroom {
         JButton send_button = new JButton("Send"); //creates the button the send strings in textbox
         send_button.setBounds(700, 700, 100, 100);
         this.frame.add(send_button);
-        send_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        send_button.addActionListener(e -> {
+
                 //display the chat to window and remmber to put time and who sent it
                 String current_string = chatwindow.getText();
                 String time = LocalDateTime.now().toString(); //getting local time
-                String string_now = time + "\n" + name + "\n" + text_box.getText();
-                //MessagesStorageGateway obj = (MessagesStorageGateway) new MessagesStorageUsecase(); classes not fully implemented yet
-                //obj.saveData(current_string);
+                String string_now = time + "\n" + "From " +name + "\n" + text_box.getText();
+                this.chatroom.addMessage(string_now);
                 current_string += "\n" + string_now;
                 chatwindow.setText(current_string); //displays it in chatwindow
-            }
         });
     }
 
