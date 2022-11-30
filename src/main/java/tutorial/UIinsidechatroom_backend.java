@@ -15,4 +15,9 @@ public class UIinsidechatroom_backend{
         //return the list of the users in this chatroom
 
     }
+
+    public User getUser(String username){
+        UserStorageUseCase obj = new UserStorageUseCase(username);
+        return obj.getData();
+    }
 }

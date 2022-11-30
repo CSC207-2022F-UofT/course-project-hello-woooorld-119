@@ -1,4 +1,6 @@
 package tutorial;
+import Login.LoginMain;
+import Login.LoginPage;
 import Storage.ChatroomStorage;
 import Storage.ChatroomStorageGateway;
 import Storage.ChatroomStorageUsecase;
@@ -7,6 +9,7 @@ import tutorial.User;
 import tutorial.UIoutsidechatroom_backend;
 import tutorial.UIinsideChatroom;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import tutorial.UIPublicProfile;
@@ -24,7 +27,7 @@ public class UIoutsideChatroom {
     public void display(){
         //displays the window
         this.frame = new JFrame();
-        this.frame.setSize(900, 900); //setting the size of the window
+        this.frame.setSize(900, 750); //setting the size of the window
         this.frame.setTitle("Diskawd"); //setting the name for the title of the window
         display_friend_lst(); // calls to display public profile of this user's friends
         display_chatrooms(); // calls to display buttons to enter chatrooms that this user is in
@@ -33,14 +36,14 @@ public class UIoutsideChatroom {
         enter_private_profile_button(this.user); //creates this user's private profile and allow edit
         this.frame.setLayout(null);//using no layout managers
         this.frame.setVisible(true);//making the frame visible
+        this.create_sign_out_button(this.frame);
     }
 
-    public void create_enter_chatroom_button(Chatroom chatroom, User user){
+    public JButton create_enter_chatroom_button(Chatroom chatroom, User user){
         //create a GUI button to enter this chatroom
         JButton b = new JButton(chatroom.getName());//creating instance of JButton
-        b.setBounds(200,100,button_width, button_length);//x axis, y axis, width, height
-        this.frame.add(b);//adding button in JFrame
         b.setEnabled(true); //enables the button
+        b.setSize(75, 75);
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,29 +51,66 @@ public class UIoutsideChatroom {
                 obj.display_current_chatroom(); // goes to the UI insidechatroom page
             }
         });
+        return b;
+    }
+
+    public void create_sign_out_button(JFrame frame){
+        JButton button = new JButton();
+        button.setEnabled(true);
+        button.setText("Sign out");
+        button.setBounds(750, 600 ,button_width, button_length);
+        this.frame.add(button);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                LoginPage obj = new LoginPage();
+            }
+        });
     }
 
     public void display_chatrooms(){
         //displays the chatroom with their icon picture
         UIoutsidechatroom_backend obj = new UIoutsidechatroom_backend();
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5,0));
+        int y = 0;
         for (Chatroom chatroom: obj.getchatroomlst(this.user)){
-            this.create_enter_chatroom_button(chatroom, this.user);
+            JButton chatrom = this.create_enter_chatroom_button(chatroom, this.user);
+            chatrom.setBounds(0, y, 50, 50);
+            panel.add(chatrom);
+            y += 60;
         }
+        JPanel container = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        container.add(panel);
+        JScrollPane scrollPane = new JScrollPane(container);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(20, 20, 100, 500);
+        this.frame.getContentPane().add(scrollPane);
     }
 
     public void display_friend_lst(){
         //display this user's friendlist
         UIoutsidechatroom_backend obj = new UIoutsidechatroom_backend();
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5,0));
         for (User friend: obj.getuserfriends(this.user)){
-            this.enter_friend_public_profile_button(friend);
+            JButton but = this.enter_friend_public_profile_button(friend);
+            panel.add(but);
         }
+        JPanel container = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        container.add(panel);
+        JScrollPane scrollPane = new JScrollPane(container);
+        scrollPane.setBounds(750, 20, 100, 500);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        this.frame.getContentPane().add(scrollPane);
     }
 
     public void create_chatroom_button() {
         //create a GUI button to create chatroom, with current user being the admin user
         //and store the information back to storage\
         JButton b = new JButton("Create Chatroom");//creating instance of JButton
-        b.setBounds(400,400,button_width, button_length);//x axis, y axis, width, height
+        b.setBounds(150,50,button_width, button_length);//x axis, y axis, width, height
         this.frame.add(b);//adding button in JFrame
         b.setEnabled(true);
         b.addActionListener(e -> {
@@ -78,27 +118,29 @@ public class UIoutsideChatroom {
             Chatroom chatroom = new Chatroom(display_name, this.user.getUserDisplayName());//creates the chatroom
             ChatroomStorageGateway chatroom_storage = (ChatroomStorageGateway) new ChatroomStorageUsecase(display_name);
             chatroom_storage.saveData(chatroom);
-            this.create_enter_chatroom_button(chatroom, this.user);
+            this.user.addUserToChatroom(chatroom);
+            this.frame.dispose();
+            this.display();
         });
 
     }
 
-    public void enter_friend_public_profile_button(User user){
+    public JButton enter_friend_public_profile_button(User user){
         //creates an icon when clicked, you can go into that user's public profile
         JButton b = new JButton(user.getUserDisplayName());//creating instance of JButton
-        b.setBounds(800,100,button_width, button_length);//x axis, y axis, width, height
-        this.frame.add(b);//adding button in JFrame
         b.setEnabled(true);
+        b.setPreferredSize(new Dimension(75, 75));
         b.addActionListener(e -> {
             UIPublicProfile obj = new UIPublicProfile(user);
             obj.display(); // goes to the UI profileprofile page for other user, not editable
         });
+        return b;
     }
 
     public void enter_public_profile_button(User user){
-        //create a GUI page after clicking the edit public profile button
+        //create a GUI page after clicking the edit public profile button, assumes it is the user himself
         JButton b = new JButton("Edit your public profile");//creating instance of JButton
-        b.setBounds(0,0,button_width, button_length);//x axis, y axis, width, height
+        b.setBounds(0,600,250, button_length);//x axis, y axis, width, height
         this.frame.add(b);//adding button in JFrame
         b.setEnabled(true);
         b.addActionListener(e -> {
@@ -110,7 +152,7 @@ public class UIoutsideChatroom {
     public void enter_private_profile_button(User user){
         //create a GUI page after clicking the edit private profile button
         JButton b = new JButton("Edit your private profile");//creating instance of JButton
-        b.setBounds(0,100,button_width, button_length);//x axis, y axis, width, height
+        b.setBounds(370,600,250, button_length);//x axis, y axis, width, height
         this.frame.add(b);//adding button in JFrame
         b.setEnabled(true);
         b.addActionListener(new ActionListener() {
@@ -125,10 +167,16 @@ public class UIoutsideChatroom {
     public static void main(String[] args) {
         User evan = new User("evan", "ec105", "ec105");
         User Jeff = new User("Jeff", "Jeff", "Jeff");
+        User tc = new User("tc", "tc", "tc1");
         Chatroom tut119 = new Chatroom("tut119", "evan");
         evan.addUserToFriendList(Jeff);
-        tut119.AddUser("evan");
         evan.addUserToChatroom(tut119);
+        Chatroom tut119_2 = new Chatroom("tut119_2", "evan");
+        tut119_2.AddUser("tc");
+        tc.addUserToChatroom(tut119_2);
+        tut119_2.AddUser("Jeff");
+        evan.addUserToChatroom(tut119_2);
+        Jeff.addUserToChatroom(tut119_2);
         UIoutsideChatroom a = new UIoutsideChatroom(evan);
         a.display();
 

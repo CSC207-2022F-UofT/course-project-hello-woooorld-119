@@ -6,9 +6,12 @@ import tutorial.User;
 import tutorial.UIinsidechatroom_backend;
 import tutorial.UIPublicProfile;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.*;
+import java.util.Objects;
+
 import Storage.MessagesStorageGateway;
 import Storage.MessagesStorageUsecase;
 
@@ -29,25 +32,75 @@ public class UIinsideChatroom {
         this.frame.setTitle(this.chatroom.getName()); //setting the name for the title of the window
 
         this.chat_window = new JTextArea(""); //sets up the text window in chatroom window
-        this.chat_window.setBounds(100, 0, 500, 500);
+        this.chat_window.setBounds(100, 50, 500, 500);
         this.frame.add(this.chat_window);
 
         display_member_lst(); //display its member lst
         send_message(this.chat_window, this.user.getUserDisplayName()); // setups the send message textbox and message button
         this.frame.setLayout(null);//using no layout managers
         this.frame.setVisible(true);//making the frame visible
+        this.create_add_friend_menu(this.user);
+        this.create_invite_friend_memu();
+    }
+
+    public void create_add_friend_menu(User user){
+        JMenuBar b = new JMenuBar();
+        JMenu user_lst = new JMenu();
+        b.setBounds(650, 25, 100 ,50);
+        user_lst.setText("add friend");
+        for (String name:this.chatroom.getUserLst()){
+            if (!Objects.equals(name, this.user.getUserDisplayName())) {
+                JMenuItem item = new JMenuItem(name);
+                user_lst.add(item);
+                item.addActionListener(e ->  {
+                        UIinsidechatroom_backend obj = new UIinsidechatroom_backend();
+                        user.addUserToFriendList(obj.getUser(name));
+                });
+            }
+        }
+        b.add(user_lst);
+        this.frame.add(b);
+    }
+
+    public void create_invite_friend_memu(){
+        JMenuBar b = new JMenuBar();
+        JMenu user_lst = new JMenu();
+        b.setBounds(650, 75, 100 ,50);
+        user_lst.setText("invite friend");
+        for (User name:this.user.getFriendsList()){
+            if (!name.getListofChatroom().contains(chatroom)){
+                JMenuItem item = new JMenuItem(name.getUserDisplayName());
+                user_lst.add(item);
+                item.addActionListener(e -> {
+                        this.chatroom.AddUser(name.getUserDisplayName());
+                        name.addUserToChatroom(this.chatroom);
+                        this.frame.dispose();
+                        this.display_current_chatroom();
+                });
+            }
+        }
+        b.add(user_lst);
+        this.frame.add(b);
     }
 
     public void display_member_lst(){
         //display this chatroom's member list
         //make every member displays as button, so click in opens that user's public profile page
         UIinsidechatroom_backend obj = new UIinsidechatroom_backend();
-
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5,0));
         for (String b: obj.getmember_lst(this.chatroom)){
             //creates the user icon, along with the functionality of clicking in to their public profile
-
-            this.create_public_profile_button(b);
+            JButton button = this.create_public_profile_button(b);
+            panel.add(button);
         }
+        JPanel container = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        container.add(panel);
+        JScrollPane scrollPane = new JScrollPane(container);
+        scrollPane.setBounds(800, 100, 100, 500);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        this.frame.getContentPane().add(scrollPane);
+
 
 
     }
@@ -75,11 +128,9 @@ public class UIinsideChatroom {
         });
     }
 
-    public void create_public_profile_button(String name){
+    public JButton create_public_profile_button(String name){
         //create a GUI page after clicking the edit public profile button
         JButton b = new JButton(name);//creating instance of JButton
-        b.setBounds(800,100,100,100);
-        this.frame.add(b);//adding button in JFrame
         b.setEnabled(true); //enables the button
         b.addActionListener(new ActionListener() {
             @Override
@@ -88,6 +139,7 @@ public class UIinsideChatroom {
                 obj.display(); // goes to the UI public profile page
             }
         });
+        return b;
     }
 
     public static void main(String[] args) {
