@@ -8,8 +8,8 @@ import java.sql.Timestamp;
 
 public class User {
     private String displayName;
-    private ArrayList<String> listofChatroom;
-    private ArrayList<String> friendsList;
+    private ArrayList<Chatroom> listofChatroom;
+    private ArrayList<User> friendsList;
     private String username;
     private String password;
     private ArrayList<Timestamp> loginTracker;
@@ -24,23 +24,23 @@ public class User {
     public User(String displayName, String username, String password) {
         this.displayName = displayName;
         this.username = username;
-        this.listofChatroom = new ArrayList<String>();
-        this.friendsList = new ArrayList<String>();
+        this.listofChatroom = new ArrayList<Chatroom>();
+        this.friendsList = new ArrayList<User>();
         this.password = password;
         this.loginTracker = new ArrayList<>();
     }
 
-    public void addUserToChatroom(String chatroom_name){
+    public void addUserToChatroom(Chatroom chatroom_name){
         // chatroom.adduser()
         this.listofChatroom.add(chatroom_name);
     }
 
-    public void addUserToFriendList(String friend_username){
-        this.friendsList.add(friend_username);
+    public void addUserToFriendList(User friend){
+        this.friendsList.add(friend);
     }
 
-    public void removeUserFromFriendList(String friend_username){
-        this.friendsList.remove(friend_username);
+    public void removeUserFromFriendList(User friend){
+        this.friendsList.remove(friend);
     }
 
     public void setPassword(String password){
@@ -51,11 +51,11 @@ public class User {
         return this.username;
     }
 
-    public ArrayList<String> getListofChatroom(){
+    public ArrayList<Chatroom> getListofChatroom(){
         return this.listofChatroom;
     }
 
-    public ArrayList<String> getFriendsList(){
+    public ArrayList<User> getFriendsList(){
         return this.friendsList;
     }
 
