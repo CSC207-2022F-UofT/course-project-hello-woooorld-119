@@ -8,12 +8,11 @@ import java.util.Objects;
 
 public class Chatroom {
     private String name;
-    private ArrayList<String> userList; // list of unique user objects of the users in the chatroom
+    private ArrayList<String> userList; // list of unique usernames of the users in the chatroom
     private String admin; // User who created the chatroom
-
     private ArrayList<Message> messageList; // list of messages in the chatroom
-
     private final ChatroomStorageGateway gateway; // interface to save chatroom
+    
     public Chatroom(String name, String admin, ChatroomStorageGateway gateway) {
         this.name = name;
         this.userList = new ArrayList<>();
@@ -28,6 +27,7 @@ public class Chatroom {
         this.userList.add(newUser);
         this.gateway.saveData(this);
     }
+
 
     public void removeUser(String toBeRemoved){
         if (Objects.equals(toBeRemoved, this.getAdmin())){
@@ -49,6 +49,7 @@ public class Chatroom {
         this.name = newName;
         this.gateway.saveData(this);
     }
+    
     public String getAdmin (){
         return this.admin;
     }
