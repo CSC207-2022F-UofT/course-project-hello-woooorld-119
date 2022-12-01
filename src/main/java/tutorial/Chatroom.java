@@ -4,16 +4,17 @@ import Messages.Message;
 import Storage.ChatroomStorageGateway;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Chatroom {
     private String name;
-    private ArrayList<User> userList; // list of unique usernames of the users in the chatroom
-    private User admin; // User who created the chatroom
+    private ArrayList<String> userList; // list of unique user objects of the users in the chatroom
+    private String admin; // User who created the chatroom
 
     private ArrayList<Message> messageList; // list of messages in the chatroom
 
-    private ChatroomStorageGateway gateway; // interface to save chatroom
-    public Chatroom(String name, User admin, ChatroomStorageGateway gateway) {
+    private final ChatroomStorageGateway gateway; // interface to save chatroom
+    public Chatroom(String name, String admin, ChatroomStorageGateway gateway) {
         this.name = name;
         this.userList = new ArrayList<>();
         this.admin = admin;
@@ -23,34 +24,42 @@ public class Chatroom {
         this.gateway.saveData(this);
     }
 
-    public void AddUser(User newUser){
+    public void addUser(String newUser){
         this.userList.add(newUser);
         this.gateway.saveData(this);
     }
 
-    public void RemoveUser(User toBeRemoved){
+    public void removeUser(String toBeRemoved){
+        if (Objects.equals(toBeRemoved, this.getAdmin())){
+            this.admin = null;
+        }
         this.userList.remove(toBeRemoved);
         this.gateway.saveData(this);
+    }
+
+    public ArrayList<String> getUserList(){
+        return this.userList;
     }
 
     public String getName(){
         return this.name;
     }
-    public void setName(String new_name){
-        this.name = new_name;
+
+    public void setName(String newName){
+        this.name = newName;
         this.gateway.saveData(this);
     }
-    public User getAdmin(){
+    public String getAdmin (){
         return this.admin;
     }
 
-    public void setAdmin(User newAdmin){
+    public void setAdmin(String newAdmin){
         this.admin = newAdmin;
         this.gateway.saveData(this);
     }
 
-    public void addMessage(Message message_to_add){
-        this.messageList.add(message_to_add);
+    public void addMessage(Message messageToAdd){
+        this.messageList.add(messageToAdd);
         this.gateway.saveData(this);
     }
 
