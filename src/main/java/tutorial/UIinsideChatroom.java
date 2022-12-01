@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import Storage.MessagesStorageGateway;
@@ -20,10 +21,12 @@ public class UIinsideChatroom {
     private User user;
     private JFrame frame;
     private JTextArea chat_window;
+    private UIoutsideChatroom outside_window;
 
-    public UIinsideChatroom(Chatroom chatroom, User user){
+    public UIinsideChatroom(Chatroom chatroom, User user,UIoutsideChatroom outside_window){
         this.chatroom = chatroom;
         this.user = user;
+        this.outside_window = outside_window;
     }
     public void display_current_chatroom(){
         //displays the current chatroom
@@ -51,20 +54,38 @@ public class UIinsideChatroom {
         }
     }
 
+    public ArrayList<String> get_non_friend(){
+        ArrayList<String> member_lst, result = new ArrayList<String>(), friend_lst = new ArrayList<String>();
+        member_lst = this.chatroom.getUserLst();
+        ArrayList<User> lst = this.user.getFriendsList();
+        for (User user: lst){
+            friend_lst.add(user.getUserDisplayName());
+        }
+        for (String name:member_lst){
+            if (!friend_lst.contains(name) && (!name.equals(this.user.getUserDisplayName()))){
+                result.add(name);
+            }
+        }
+        return result;
+    }
+
     public void create_add_friend_menu(User user){
         JMenuBar b = new JMenuBar();
         JMenu user_lst = new JMenu();
         b.setBounds(650, 25, 100 ,50);
         user_lst.setText("add friend");
-        for (String name:this.chatroom.getUserLst()){
-            if (!Objects.equals(name, this.user.getUserDisplayName())) {
+        for (String name:this.get_non_friend()){
                 JMenuItem item = new JMenuItem(name);
                 user_lst.add(item);
                 item.addActionListener(e ->  {
                         UIinsidechatroom_backend obj = new UIinsidechatroom_backend();
                         user.addUserToFriendList(obj.getUser(name));
+                        obj.getUser(name).addUserToFriendList(user);
+                        this.frame.dispose();
+                        this.outside_window.getFrame().dispose();
+                        this.outside_window.display();
+                        this.display_current_chatroom();
                 });
-            }
         }
         b.add(user_lst);
         this.frame.add(b);

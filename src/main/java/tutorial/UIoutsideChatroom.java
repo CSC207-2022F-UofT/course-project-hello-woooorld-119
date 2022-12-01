@@ -43,6 +43,10 @@ public class UIoutsideChatroom {
         this.create_join_chatroom_button();
     }
 
+    public JFrame getFrame(){
+        return this.frame;
+    }
+
     public void create_dm_button(){
         JButton b = new JButton();
         b.setText("DirectMessage with friend");
@@ -56,6 +60,9 @@ public class UIoutsideChatroom {
                 if (user.getUserDisplayName().equals(username)){
                     dmuser = user;
                     DirectMessage obj = new DirectMessage(dmuser, this.user);
+                    Chatroom room = obj.getchatroomname();
+                    this.frame.dispose();
+                    this.display();
                 }
             }
         });
@@ -85,12 +92,9 @@ public class UIoutsideChatroom {
         JButton b = new JButton(chatroom.getName());//creating instance of JButton
         b.setEnabled(true); //enables the button
         b.setSize(75, 75);
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIinsideChatroom obj = new UIinsideChatroom(chatroom, user);
+        b.addActionListener(e ->  {
+                UIinsideChatroom obj = new UIinsideChatroom(chatroom, user, this);
                 obj.display_current_chatroom(); // goes to the UI insidechatroom page
-            }
         });
         return b;
     }
