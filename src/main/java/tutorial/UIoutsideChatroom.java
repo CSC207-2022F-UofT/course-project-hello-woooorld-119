@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import tutorial.UIPublicProfile;
 import tutorial.UIPrivateProfile;
 import tutorial.DirectMessage;
@@ -68,21 +70,38 @@ public class UIoutsideChatroom {
         });
     }
 
+    public ArrayList<Chatroom> not_joined_rooms(){
+        ChatroomStorageJ obj = new ChatroomStorageJ();
+        ArrayList<String> joined = new ArrayList<>();
+        ArrayList<Chatroom> result = new ArrayList<>();
+        for (Chatroom room: this.user.getListofChatroom()){
+            joined.add(room.getName());
+        }
+        for (Chatroom room: obj.getChatrooms()){
+            System.out.println(room.getName() + " abc");
+            if (!joined.contains(room.getName())){
+                result.add(room);
+            }
+        }
+        return result;
+    }
+
     public void create_join_chatroom_button(){
         JMenuBar b = new JMenuBar();
         JMenu room_lst = new JMenu();
         b.setBounds(275, 50, 100 ,100);
         room_lst.setText("join chatroom");
-        ChatroomStorageJ obj = new ChatroomStorageJ();
         b.add(room_lst);
         this.frame.add(b);
-        System.out.println(obj.getChatrooms());
-        for (Chatroom room: obj.getChatrooms()){
-            JMenuItem item = new JMenuItem(room.getName());
+        for (Chatroom room: this.not_joined_rooms()){
+                System.out.println(room.getName());
+                JMenuItem item = new JMenuItem(room.getName());
                 room_lst.add(item);
                 item.addActionListener(e -> {
                     this.user.addUserToChatroom(room);
                     room.AddUser(this.user.getUserDisplayName());
+                    this.frame.dispose();
+                    this.display();
                 });
         }
     }

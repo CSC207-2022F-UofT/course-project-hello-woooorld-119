@@ -13,12 +13,13 @@ public class ChatroomStorageJ {
     public ArrayList<Chatroom> getChatrooms() {
         ArrayList<String> chatroom_names = chatroom_storage.getfiles();
 
-        System.out.println(chatroom_names);
-
         ArrayList<Chatroom> output = new ArrayList<Chatroom>();
 
         for (String s: chatroom_names) {
-            output.add(new ChatroomStorageUsecase(s).getData());
+            ChatroomStorageUsecase c = new ChatroomStorageUsecase(s);
+            System.out.println(c.chatroom_storage.file_name);
+            output.add(c.getData());
+
         }
 
         return output;
