@@ -35,6 +35,8 @@ public class Storage {
     public ArrayList<String> getfiles() {
         try {
             Stream<Path> result = Files.walk(Paths.get(file_name));
+            // the line below goes through all files inside the specified folder and then gets the name of the file without the .txt extension.
+            // we need to get rid of the extension since our specific storages like AccountsStorage and ChatroomStorage already append the .txt extension
             return (ArrayList<String>) result.filter(Files::isRegularFile).map(x -> x.toString().replaceFirst(".txt", "").replaceFirst("storage/chatrooms/", "")).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
