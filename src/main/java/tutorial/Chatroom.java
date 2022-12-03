@@ -1,53 +1,64 @@
 package tutorial;
 
+import Messages.Message;
+import Storage.ChatroomStorageGateway;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Chatroom {
     private String name;
-    private ArrayList<String> user_list; // list of unique usernames of the users in the chatroom
-    private String admin_name; // User who created the chatroom
-    public Chatroom(String name, String admin_name) {
+    private ArrayList<User> userList; // list of unique user objects of the users in the chatroom
+    private User admin; // User who created the chatroom
+
+    private ArrayList<Message> messageList; // list of messages in the chatroom
+
+    private final ChatroomStorageGateway gateway; // interface to save chatroom
+    public Chatroom(String name, User admin, ChatroomStorageGateway gateway) {
         this.name = name;
-        this.user_list = new ArrayList<>();
-        this.admin_name = admin_name;
-        this.user_list.add(admin_name);
+        this.userList = new ArrayList<>();
+        this.admin = admin;
+        this.userList.add(admin);
+        this.messageList = new ArrayList<>();
+        this.gateway = gateway;
+        this.gateway.saveData(this);
     }
 
-    public void AddUser(String username){
-        this.user_list.add(username);
-
+    public void addUser(User newUser){
+        this.userList.add(newUser);
+        this.gateway.saveData(this);
     }
 
-    public void RemoveUser(String username){
-        this.user_list.remove(username);
-        if (user_list.size() == 0){
-            // code to delete chatroom from storage
+    public void removeUser(User toBeRemoved){
+        if (Objects.equals(toBeRemoved.getUsername(), this.getAdmin().getUsername())){
+            this.admin = null;
         }
-
+        this.userList.remove(toBeRemoved);
+        this.gateway.saveData(this);
     }
 
-
+    public ArrayList<User> getUserList(){
+        return this.userList;
+    }
     public String getName(){
         return this.name;
     }
-    public void setName(String new_name){
-        this.name = new_name;
+    public void setName(String newName){
+        this.name = newName;
+        this.gateway.saveData(this);
     }
-    public String getAdmin_name (){
-        return this.admin_name;
-    }
-
-    public void setAdmin(String new_admin_name){
-        this.admin_name = new_admin_name;
+    public User getAdmin (){
+        return this.admin;
     }
 
-    // to be done after storage is created
-    public void setMessages(){
-        // set up the Chatroom with all the messages from ChatroomStorage //
+    public void setAdmin(User newAdmin){
+        this.admin = newAdmin;
+        this.gateway.saveData(this);
     }
 
-    public void addMessage(){
-        // add message to ChatroomStorage
+    public void addMessage(Message messageToAdd){
+        this.messageList.add(messageToAdd);
+        this.gateway.saveData(this);
     }
 
 }

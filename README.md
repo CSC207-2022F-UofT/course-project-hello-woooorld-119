@@ -1,39 +1,61 @@
-# Project Template
+MILESTONE 4 PULL REQUEST EXPLANATIONS 
 
-This is a template repository for CSC 207 projects. 
-This repository contains starter code for a gradle project.
-It also contains workflow documents that give instructions on how to manage your Github repository and how to use Github Projects for efficient collaboration.
+ISABEL
+1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/13
+Here, I added the majority of the User class implementation. I believe this was significant as the class is an entity
+and is needed in order for the other classes to work. This was the pull request done after writing new methods and 
+adding the changes made to implement Storage.  
+2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
+This is a more recent pull request, however, I believe my review was significant as I ensured that our group's code is staying consistent throughout 
+everyone's parts. This is in terms of method/function names. As well, I asked for reviews on code written based on what the group had previously 
+discussed. This is to ensure we are all on the same page with the design of the application and that our logic is clear so there is no confusion. 
 
-## Checklist For Your Project
-- [ ] Verify the correct settings for your project repository
-- [ ] Set up Github Projects
-- [ ] Create the implementation plan using issues and Github Projects
-- [ ] Create deveopment branches for your features
-- [ ] Use pull requests to merge finished features into main branch
-- [ ] Conduct code reviews
+Note: I will be writing test cases for Milestone 5 with Nivedha 
 
-**If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
+NIVEDHA
 
-## Workflow Documents
+1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/20
+- most recent pull request with the most complete version of the Chatroom entity class. 
+- Included code that allows every created Chatroom to be stored in Storage 
+- Included a method to allow every new message sent to also be stored in the Chatroom's message storage and updates the Chatroom data in Storage
 
-* Github Workflow: Please refer to the workflow that was introduced in the first lab. You should follow this when working on your code. The following document provides additional details too.
+2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/8
+- first push to Chatroom class
+- defined the integral structure of the Chatroom entity that would early on act as the basis for other entities and interfaces to be implemented
 
-* [Project Planning and Development Guide](project_plan_dev.md): This document helps you to understand how to create and maintain a project plan for your class project. **This document helps you to complete the Implementation Plan Milestone.**
+https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
+- comment and approval under files changed related to UI implementing a way for a Chatroom to be hidden once number of users becomes 0 and clarifications 
+regarding the structure of the Chatroom class
 
-## Gradle Project
-Import this project into your Intellij editor. It should automatically recognise this as a gradle repository.
-The starter code was built using SDK version 11.0.1. Ensure that you are using this version for this project. (You can, of course, change the SDK version as per your requirement if your team has all agreed to use a different version)
+Note: I will be writing test cases for milestone 5 with Isabel
 
-You have been provided with two starter files for demonstration: HelloWorld and HelloWorldTest.
+JEFF
+1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/11
+This is my biggest pull request when I nearly completed the backbone of the storage system. I took inspiration from the data access we learned from lecture. Although no test cases were uploaded, I tested this on my own and the test cases will be uploaded by milestone 5.
 
-You will find HelloWorld in `src/main/java/tutorial` directory. Right click on the HelloWorld file and click on `Run HelloWorld.main()`.
-This should run the program and print on your console.
+2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/12
+I actively gave feedback and advice through multiple changes in this pull request.
 
-You will find HelloWorldTest in `src/test/java/tutorial` directory. Right click on the HelloWorldTest file and click on `Run HelloWorldTest`.
-All tests should pass. Your team can remove this sample of how testing works once you start adding your project code to the repo.
+SAM
+1. 
+2.
 
-Moving forward, we expect you to maintain this project structure. You *should* use Gradle as the build environment, but it is fine if your team prefers to use something else -- just remove the gradle files and push your preferred project setup. Assuming you stick with Gradle, your source code should go into `src/main/java` (you can keep creating more subdirectories as per your project requirement). Every source class can auto-generate a test file for you. For example, open HelloWorld.java file and click on the `HelloWorld` variable as shown in the image below. You should see an option `Generate` and on clicking this your should see an option `Test`. Clicking on this will generate a JUnit test file for `HelloWorld` class. This was used to generate the `HelloWorldTest`.
+EVAN
+I have made a pull request https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
+(2 user intefaces #22), even though it hasn't gone through, but I have the changes in file UIinsdeChatroom
+and UIoutsideChatroom in 2-user-interfaces and both are pretty much complete and runnable.(since being able to see the output
+are quite important for designing the User interfaces. You can pull the files from branches 2-user-interfaces and run!, not from main).
+I have set it up and made it runnable in UIoutsideChatroom's main, so that clicking button named tut119 will run UIinsideChatroom
+and both should pop-up a frame with buttons and chat_window. for now only and create chatroom and enter chatroom button is clickable
+and send message button inside chatroom.
 
-![image](https://user-images.githubusercontent.com/5333020/196066655-d3c97bf4-fdbd-46b0-b6ae-aeb8dbcf351d.png)
+The pull request I made some review would be the same pull request as above, where I have discussed the problem with Jeff
+of having data interfering the terminal or UI in Sam's work, which allowed me to actually realize the problem in the code.
+Sam actually have the data reading and outputting in terminal which go against of our design of the project. While now it is fixed,
+it made us clear of how we actually want our UI designed.
 
-You can create another simple class and try generating a test for this class.
+TC
+1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/23
+In this pull request, I have implemented the ability to create direct message chatrooms among users. Throughout the writing process of this class, I used Discord to give me a picture on what kind of functions would be beneficial or are needed while direct messaging people. 
+2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/16
+In this pull request, my teammate reminded me that I was heading toward the wrong direction because addmessage shouldn't be an entity. However, I wasn't really sure how to fix it at the start. However, after asking for a clearification during the tutorial, I unserstood what was the issue and got it sorted out. 
