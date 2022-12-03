@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserTests {
+public class UserTests {
 
     // User with no chatroom's
     @Test
@@ -47,6 +47,7 @@ class UserTests {
         expected.add(clark);
         assertEquals(expected, martin.getFriendsList());
     }
+
 
     @Test
     void testremoveUserFromFriendList(){
