@@ -120,7 +120,7 @@ public class UIinsideChatroom {
                 String current_string = chatwindow.getText();
                 String time = LocalDateTime.now().toString(); //getting local time
                 String string_now = time + "\n" + name + "\n" + text_box.getText();
-                //MessagesStorageGateway obj = (MessagesStorageGateway) new MessagesStorageUsecase(); classes not fully implemented yet
+                //MessagesStorageGateway obj = (MessagesStorageGateway) new MessagesStorageUsecase();
                 //obj.saveData(current_string);
                 current_string += "\n" + string_now;
                 chatwindow.setText(current_string); //displays it in chatwindow

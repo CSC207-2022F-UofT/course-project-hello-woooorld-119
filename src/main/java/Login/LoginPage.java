@@ -71,7 +71,7 @@ public class LoginPage implements ActionListener {
                 messageLabel.setForeground(Color.green);
                 messageLabel.setText("Login successful");
                 frame.dispose();
-                User user = new User("evan", "evan", "evan");
+                User user = loginController.getUser();
                 UIoutsideChatroom obj = new UIoutsideChatroom(user);
                 obj.display();
                 //WelcomePage welcomePage = new WelcomePage();

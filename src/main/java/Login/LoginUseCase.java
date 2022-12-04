@@ -1,6 +1,7 @@
 package Login;
 import Storage.AccountsStorageUseCase;
 import Storage.UserStorageUseCase;
+import tutorial.User;
 
 /*
  * This UseCase class is responsible for storing all the data from the user regarding the login information.
@@ -34,6 +35,11 @@ public class LoginUseCase {
         } else {
             return false;
         }
+    }
+
+    public User getUser(){
+        User user = userStorage.getData();
+        return user;
     }
 
 

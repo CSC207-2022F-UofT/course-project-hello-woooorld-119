@@ -12,7 +12,10 @@ public class User {
     private ArrayList<User> friendsList;
     private String username;
     private String password;
-    private ArrayList<Timestamp> loginTracker;
+    private String bio;
+    private String status;
+    private String comment;
+
 
     /**
      * Construct a User
@@ -27,7 +30,9 @@ public class User {
         this.listofChatroom = new ArrayList<Chatroom>();
         this.friendsList = new ArrayList<User>();
         this.password = password;
-        this.loginTracker = new ArrayList<>();
+        this.bio = "Empty";
+        this.status = "Empty";
+        this.comment = "Empty";
     }
 
     public String getUserDisplayName(){
@@ -70,20 +75,22 @@ public class User {
     public ArrayList<User> getFriendsList(){
         return this.friendsList;
     }
-
-    // Setter of loginTracker and getter of loginTacker
-
-    public void setLoginTracker(ArrayList<Timestamp>loginTracker){
-        this.loginTracker = loginTracker;
+    public String getBio(){
+        return bio;
     }
-
-    public ArrayList<Timestamp>getLoginTracker(){
-        return loginTracker;
+    public void setBio(String bio){
+        this.bio = bio;
     }
-
-    // Method to update login tracker
-
-    public void updateLoginTracker(Timestamp timing){
-        loginTracker.add(timing);
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
+    }
+    public String getComment(){
+        return comment;
+    }
+    public void setComment(String comment){
+        this.comment = comment;
     }
 }
