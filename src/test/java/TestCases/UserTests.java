@@ -1,10 +1,10 @@
 package TestCases;
 
+import Storage.ChatroomStorageUsecase;
 import org.junit.jupiter.api.Test;
 import tutorial.Chatroom;
 import tutorial.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,20 +15,20 @@ public class UserTests {
     @Test
     void testgetListofChatroomEmpty() {
         User martin = new User("MART", "martin", "password123");
-        ArrayList<User> expected = new ArrayList<>();
+        ArrayList<Chatroom> expected = new ArrayList<>();
         assertEquals(expected, martin.getListofChatroom());
     }
 
     @Test
     void testgetListofChatroom() {
         User martin = new User("MART", "martin", "password123");
-        ArrayList<User> expected = new ArrayList<>();
+        ArrayList<Chatroom> expected = new ArrayList<>();
         assertEquals(expected, martin.getListofChatroom());
     }
     @Test
     void testaddUserToChatroom() {
         User martin = new User("MART", "martin", "password123");
-        Chatroom cscgroup = new Chatroom("CSCgroup", "martin");
+        Chatroom cscgroup = new Chatroom("CSCgroup", martin, new ChatroomStorageUsecase("hello"));
         ArrayList<Chatroom> expected = new ArrayList<>();
         expected.add(cscgroup);
         martin.addUserToChatroom(cscgroup);
