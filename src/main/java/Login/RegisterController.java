@@ -16,7 +16,7 @@ public class RegisterController {
 
     }
 
-    public String registerUser(String displayName, String username, String password1, String password2){
-        return registerUseCase.registerUser(displayName, username, password1, password2);
+    public String registerUser(){
+        return registerUseCase.registerUser();
     }
 }

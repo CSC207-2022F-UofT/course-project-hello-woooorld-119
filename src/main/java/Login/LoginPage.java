@@ -67,7 +67,7 @@ public class LoginPage implements ActionListener {
             String password = String.valueOf(userPassword.getPassword());
             LoginController loginController = new LoginController(username, password);
 
-            if (loginController.checkUser(username, password)){
+            if (loginController.checkUser()){
                 messageLabel.setForeground(Color.green);
                 messageLabel.setText("Login successful");
                 frame.dispose();

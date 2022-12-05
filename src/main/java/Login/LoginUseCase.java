@@ -28,7 +28,7 @@ public class LoginUseCase {
  * @param password
  * @return a dictionary of weather a user exists
  */
-    public boolean checkUser(String username, String password) {
+    public boolean checkUser() {
 
         if (storageUseCase.usernameExists(username)) {
             return storageUseCase.passwordExists(username, password);
@@ -45,8 +45,11 @@ public class LoginUseCase {
 
 //Checks if the user with the given username exists.
 
-    public boolean checkUsername(String username){
+    public boolean checkUsername(){
         return storageUseCase.usernameExists(username);
+    }
+    public boolean checkPassword(){
+        return storageUseCase.passwordExists(username, password);
     }
 
     public void saveLogin(String username, String password){
