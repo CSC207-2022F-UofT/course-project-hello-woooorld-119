@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import Storage.MessagesStorageGateway;
@@ -20,10 +21,12 @@ public class UIinsideChatroom {
     private User user;
     private JFrame frame;
     private JTextArea chat_window;
+    private UIoutsideChatroom outside_window;
 
-    public UIinsideChatroom(Chatroom chatroom, User user){
+    public UIinsideChatroom(Chatroom chatroom, User user,UIoutsideChatroom outside_window){
         this.chatroom = chatroom;
         this.user = user;
+        this.outside_window = outside_window;
     }
     public void display_current_chatroom(){
         //displays the current chatroom
@@ -33,7 +36,9 @@ public class UIinsideChatroom {
 
         this.chat_window = new JTextArea(""); //sets up the text window in chatroom window
         this.chat_window.setBounds(100, 50, 500, 500);
+        this.setup_chatwindow_message(this.chat_window);
         this.frame.add(this.chat_window);
+
 
         display_member_lst(); //display its member lst
         send_message(this.chat_window, this.user.getUserDisplayName()); // setups the send message textbox and message button
@@ -43,20 +48,44 @@ public class UIinsideChatroom {
         this.create_invite_friend_memu();
     }
 
+    public void setup_chatwindow_message(JTextArea chat_window){
+        for (String txt: this.chatroom.getMessage()) {
+            chat_window.setText(txt);
+        }
+    }
+
+    public ArrayList<String> get_non_friend(){
+        ArrayList<String> member_lst, result = new ArrayList<String>(), friend_lst = new ArrayList<String>();
+        member_lst = this.chatroom.getUserLst();
+        ArrayList<User> lst = this.user.getFriendsList();
+        for (User user: lst){
+            friend_lst.add(user.getUsername());
+        }
+        for (String name:member_lst){
+            if (!friend_lst.contains(name) && (!name.equals(this.user.getUsername()))){
+                result.add(name);
+            }
+        }
+        return result;
+    }
+
     public void create_add_friend_menu(User user){
         JMenuBar b = new JMenuBar();
         JMenu user_lst = new JMenu();
         b.setBounds(650, 25, 100 ,50);
         user_lst.setText("add friend");
-        for (String name:this.chatroom.getUserLst()){
-            if (!Objects.equals(name, this.user.getUserDisplayName())) {
+        for (String name:this.get_non_friend()){
                 JMenuItem item = new JMenuItem(name);
                 user_lst.add(item);
                 item.addActionListener(e ->  {
                         UIinsidechatroom_backend obj = new UIinsidechatroom_backend();
                         user.addUserToFriendList(obj.getUser(name));
+                        obj.getUser(name).addUserToFriendList(user);
+                        this.frame.dispose();
+                        this.outside_window.getFrame().dispose();
+                        this.outside_window.display();
+                        this.display_current_chatroom();
                 });
-            }
         }
         b.add(user_lst);
         this.frame.add(b);
@@ -88,11 +117,13 @@ public class UIinsideChatroom {
         //make every member displays as button, so click in opens that user's public profile page
         UIinsidechatroom_backend obj = new UIinsidechatroom_backend();
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(5,0));
+        panel.setLayout(new GridLayout(10,1));
         for (String b: obj.getmember_lst(this.chatroom)){
             //creates the user icon, along with the functionality of clicking in to their public profile
-            JButton button = this.create_public_profile_button(b);
-            panel.add(button);
+            if (!b.equals(this.user.getUserDisplayName())) {
+                JButton button = this.create_public_profile_button(b);
+                panel.add(button);
+            }
         }
         JPanel container = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         container.add(panel);
@@ -113,18 +144,15 @@ public class UIinsideChatroom {
         JButton send_button = new JButton("Send"); //creates the button the send strings in textbox
         send_button.setBounds(700, 700, 100, 100);
         this.frame.add(send_button);
-        send_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        send_button.addActionListener(e -> {
+
                 //display the chat to window and remmber to put time and who sent it
                 String current_string = chatwindow.getText();
                 String time = LocalDateTime.now().toString(); //getting local time
-                String string_now = time + "\n" + name + "\n" + text_box.getText();
-                //MessagesStorageGateway obj = (MessagesStorageGateway) new MessagesStorageUsecase();
-                //obj.saveData(current_string);
+                String string_now = time + "\n" + "From " +name + "\n" + text_box.getText();
+                this.chatroom.addMessage(string_now);
                 current_string += "\n" + string_now;
                 chatwindow.setText(current_string); //displays it in chatwindow
-            }
         });
     }
 

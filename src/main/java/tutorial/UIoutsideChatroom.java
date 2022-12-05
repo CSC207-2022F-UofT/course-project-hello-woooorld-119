@@ -3,6 +3,7 @@ import Login.LoginMain;
 import Login.LoginPage;
 import Storage.ChatroomStorage;
 import Storage.ChatroomStorageGateway;
+import Storage.ChatroomStorageJ;
 import Storage.ChatroomStorageUsecase;
 import tutorial.Chatroom;
 import tutorial.User;
@@ -12,8 +13,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import tutorial.UIPublicProfile;
 import tutorial.UIPrivateProfile;
+import tutorial.DirectMessage;
 
 public class UIoutsideChatroom {
     private final User user;
@@ -37,6 +41,70 @@ public class UIoutsideChatroom {
         this.frame.setLayout(null);//using no layout managers
         this.frame.setVisible(true);//making the frame visible
         this.create_sign_out_button(this.frame);
+        this.create_dm_button();
+        this.create_join_chatroom_button();
+    }
+
+    public JFrame getFrame(){
+        return this.frame;
+    }
+
+    public void create_dm_button(){
+        JButton b = new JButton();
+        b.setText("DirectMessage with friend");
+        b.setBounds(400, 50, 200,100);
+        b.setEnabled(true);
+        this.frame.add(b);
+        b.addActionListener(e -> {
+            String username = JOptionPane.showInputDialog("Enter username name");
+            User dmuser;
+            for (User user: this.user.getFriendsList()) {
+                if (user.getUserDisplayName().equals(username)){
+                    dmuser = user;
+                    DirectMessage obj = new DirectMessage(dmuser, this.user);
+                    Chatroom room = obj.getchatroomname();
+                    this.frame.dispose();
+                    this.display();
+                }
+            }
+        });
+    }
+
+    public ArrayList<Chatroom> not_joined_rooms(){
+        ChatroomStorageJ obj = new ChatroomStorageJ();
+        ArrayList<String> joined = new ArrayList<>();
+        ArrayList<Chatroom> result = new ArrayList<>();
+        for (Chatroom room: this.user.getListofChatroom()){
+            joined.add(room.getName());
+        }
+        for (Chatroom room: obj.getChatrooms()){
+            System.out.println(room.getName() + " abc");
+            if (!joined.contains(room.getName())){
+                result.add(room);
+
+            }
+        }
+        return result;
+    }
+
+    public void create_join_chatroom_button(){
+        JMenuBar b = new JMenuBar();
+        JMenu room_lst = new JMenu();
+        b.setBounds(275, 50, 100 ,100);
+        room_lst.setText("join chatroom");
+        b.add(room_lst);
+        this.frame.add(b);
+        for (Chatroom room: this.not_joined_rooms()){
+                System.out.println(room.getName());
+                JMenuItem item = new JMenuItem(room.getName());
+                room_lst.add(item);
+                item.addActionListener(e -> {
+                    this.user.addUserToChatroom(room);
+                    room.AddUser(this.user.getUserDisplayName());
+                    this.frame.dispose();
+                    this.display();
+                });
+        }
     }
 
     public JButton create_enter_chatroom_button(Chatroom chatroom, User user){
@@ -44,12 +112,9 @@ public class UIoutsideChatroom {
         JButton b = new JButton(chatroom.getName());//creating instance of JButton
         b.setEnabled(true); //enables the button
         b.setSize(75, 75);
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIinsideChatroom obj = new UIinsideChatroom(chatroom, user);
+        b.addActionListener(e ->  {
+                UIinsideChatroom obj = new UIinsideChatroom(chatroom, user, this);
                 obj.display_current_chatroom(); // goes to the UI insidechatroom page
-            }
         });
         return b;
     }
@@ -119,6 +184,7 @@ public class UIoutsideChatroom {
             ChatroomStorageGateway chatroom_storage = (ChatroomStorageGateway) new ChatroomStorageUsecase(display_name);
             chatroom_storage.saveData(chatroom);
             this.user.addUserToChatroom(chatroom);
+            chatroom.AddUser(this.user.getUsername());
             this.frame.dispose();
             this.display();
         });
@@ -162,21 +228,31 @@ public class UIoutsideChatroom {
     }
 
     public static void main(String[] args) {
-        User evan = new User("evan", "ec105", "ec105");
+        User evan = new User("Evan", "evan", "evan");
         User Jeff = new User("Jeff", "Jeff", "Jeff");
         User tc = new User("tc", "tc", "tc1");
+        User Is = new User("Is", "is", "is");
+        User Nuteldha = new User("Nuteldha", "nuteldha", "nuteldha");
+        User Sam = new User("Sam", "sam", "sam");
         Chatroom tut119 = new Chatroom("tut119", "evan");
+        ChatroomStorageUsecase obj = new ChatroomStorageUsecase("tut119");
         evan.addUserToFriendList(Jeff);
         evan.addUserToChatroom(tut119);
+        Jeff.addUserToChatroom(tut119);
+        tc.addUserToChatroom(tut119);
+        Is.addUserToChatroom(tut119);
+        Nuteldha.addUserToChatroom(tut119);
+        Sam.addUserToChatroom(tut119);
+        tut119.AddUser("tc");
+        tut119.AddUser("Jeff");
+        tut119.AddUser("nuteldha");
+        tut119.AddUser("is");
+        tut119.AddUser("sam");
+        obj.saveData(tut119);
         Chatroom tut119_2 = new Chatroom("tut119_2", "evan");
-        tut119_2.AddUser("tc");
-        tc.addUserToChatroom(tut119_2);
-        tut119_2.AddUser("Jeff");
         evan.addUserToChatroom(tut119_2);
-        Jeff.addUserToChatroom(tut119_2);
         UIoutsideChatroom a = new UIoutsideChatroom(evan);
         a.display();
-
     }
 
 }
