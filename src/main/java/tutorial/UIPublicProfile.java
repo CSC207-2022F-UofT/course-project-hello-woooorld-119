@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UIPublicProfile implements ActionListener {
+public class UIPublicProfile implements ActionListener, EditProfileStrategyInterface {
 
     private User userOwner;
     private User userViewer;
@@ -38,6 +38,7 @@ public class UIPublicProfile implements ActionListener {
         commentCurrent.setText(profileController.getComment());
     }
 
+    @Override
     public void display(){
         // displays the UI for this user's public profile
         displayNameLabel.setBounds(50, 100, 175, 25);
