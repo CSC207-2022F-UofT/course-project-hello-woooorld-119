@@ -59,10 +59,10 @@ public class UIinsideChatroom {
         member_lst = this.chatroom.getUserLst();
         ArrayList<User> lst = this.user.getFriendsList();
         for (User user: lst){
-            friend_lst.add(user.getUserDisplayName());
+            friend_lst.add(user.getUsername());
         }
         for (String name:member_lst){
-            if (!friend_lst.contains(name) && (!name.equals(this.user.getUserDisplayName()))){
+            if (!friend_lst.contains(name) && (!name.equals(this.user.getUsername()))){
                 result.add(name);
             }
         }
@@ -117,11 +117,13 @@ public class UIinsideChatroom {
         //make every member displays as button, so click in opens that user's public profile page
         UIinsidechatroom_backend obj = new UIinsidechatroom_backend();
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(5,0));
+        panel.setLayout(new GridLayout(10,1));
         for (String b: obj.getmember_lst(this.chatroom)){
             //creates the user icon, along with the functionality of clicking in to their public profile
-            JButton button = this.create_public_profile_button(b);
-            panel.add(button);
+            if (!b.equals(this.user.getUserDisplayName())) {
+                JButton button = this.create_public_profile_button(b);
+                panel.add(button);
+            }
         }
         JPanel container = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         container.add(panel);

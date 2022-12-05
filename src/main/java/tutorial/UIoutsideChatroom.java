@@ -81,6 +81,7 @@ public class UIoutsideChatroom {
             System.out.println(room.getName() + " abc");
             if (!joined.contains(room.getName())){
                 result.add(room);
+
             }
         }
         return result;
@@ -183,6 +184,7 @@ public class UIoutsideChatroom {
             ChatroomStorageGateway chatroom_storage = (ChatroomStorageGateway) new ChatroomStorageUsecase(display_name);
             chatroom_storage.saveData(chatroom);
             this.user.addUserToChatroom(chatroom);
+            chatroom.AddUser(this.user.getUsername());
             this.frame.dispose();
             this.display();
         });
@@ -226,23 +228,31 @@ public class UIoutsideChatroom {
     }
 
     public static void main(String[] args) {
-        User evan = new User("evan", "ec105", "ec105");
+        User evan = new User("Evan", "evan", "evan");
         User Jeff = new User("Jeff", "Jeff", "Jeff");
         User tc = new User("tc", "tc", "tc1");
+        User Is = new User("Is", "is", "is");
+        User Nuteldha = new User("Nuteldha", "nuteldha", "nuteldha");
+        User Sam = new User("Sam", "sam", "sam");
         Chatroom tut119 = new Chatroom("tut119", "evan");
         ChatroomStorageUsecase obj = new ChatroomStorageUsecase("tut119");
-        obj.saveData(tut119);
         evan.addUserToFriendList(Jeff);
         evan.addUserToChatroom(tut119);
+        Jeff.addUserToChatroom(tut119);
+        tc.addUserToChatroom(tut119);
+        Is.addUserToChatroom(tut119);
+        Nuteldha.addUserToChatroom(tut119);
+        Sam.addUserToChatroom(tut119);
+        tut119.AddUser("tc");
+        tut119.AddUser("Jeff");
+        tut119.AddUser("nuteldha");
+        tut119.AddUser("is");
+        tut119.AddUser("sam");
+        obj.saveData(tut119);
         Chatroom tut119_2 = new Chatroom("tut119_2", "evan");
-        tut119_2.AddUser("tc");
-        tc.addUserToChatroom(tut119_2);
-        tut119_2.AddUser("Jeff");
         evan.addUserToChatroom(tut119_2);
-        Jeff.addUserToChatroom(tut119_2);
         UIoutsideChatroom a = new UIoutsideChatroom(evan);
         a.display();
-
     }
 
 }
