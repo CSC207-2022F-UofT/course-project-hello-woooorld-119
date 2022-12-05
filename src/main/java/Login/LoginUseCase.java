@@ -1,6 +1,7 @@
 package Login;
 import Storage.AccountsStorageUseCase;
 import Storage.UserStorageUseCase;
+import tutorial.User;
 
 /*
  * This UseCase class is responsible for storing all the data from the user regarding the login information.
@@ -27,7 +28,7 @@ public class LoginUseCase {
  * @param password
  * @return a dictionary of weather a user exists
  */
-    public boolean checkUser(String username, String password) {
+    public boolean checkUser() {
 
         if (storageUseCase.usernameExists(username)) {
             return storageUseCase.passwordExists(username, password);
@@ -36,11 +37,19 @@ public class LoginUseCase {
         }
     }
 
+    public User getUser(){
+        User user = userStorage.getData();
+        return user;
+    }
+
 
 //Checks if the user with the given username exists.
 
-    public boolean checkUsername(String username){
+    public boolean checkUsername(){
         return storageUseCase.usernameExists(username);
+    }
+    public boolean checkPassword(){
+        return storageUseCase.passwordExists(username, password);
     }
 
     public void saveLogin(String username, String password){

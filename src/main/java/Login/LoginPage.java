@@ -67,11 +67,11 @@ public class LoginPage implements ActionListener {
             String password = String.valueOf(userPassword.getPassword());
             LoginController loginController = new LoginController(username, password);
 
-            if (loginController.checkUser(username, password)){
+            if (loginController.checkUser()){
                 messageLabel.setForeground(Color.green);
                 messageLabel.setText("Login successful");
                 frame.dispose();
-                User user = new User("evan", "evan", "evan");
+                User user = loginController.getUser();
                 UIoutsideChatroom obj = new UIoutsideChatroom(user);
                 obj.display();
                 //WelcomePage welcomePage = new WelcomePage();

@@ -31,8 +31,8 @@ public class RegisterUseCase {
     }
 
     //Creates the user account with the specified username, password and display name.
-    public User createUser(String displayName, String username, String password){
-        User user = new User(displayName, username, password);
+    public User createUser(){
+        User user = new User(displayName, username, password1);
         UserStorageUseCase userStorage = new UserStorageUseCase(username);
         userStorage.saveData(user);
         return user;
@@ -45,7 +45,7 @@ public class RegisterUseCase {
         storageUseCase.save(username, password);
     }
 
-    public String registerUser(String displayName, String username, String password1, String password2){
+    public String registerUser(){
         if (checkUsername(username)){
             return "exists";
         }
@@ -53,7 +53,7 @@ public class RegisterUseCase {
             return "Passwords not matching";
         }
         else{
-            User user = createUser(displayName, username, password1);
+            User user = createUser();
             saveUser(user);
             storageUseCase.save(username, password1);
             return "Successful";

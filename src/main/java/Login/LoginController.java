@@ -1,5 +1,7 @@
 package Login;
 
+import tutorial.User;
+
 public class LoginController {
     private String username;
     private String password;
@@ -11,8 +13,12 @@ public class LoginController {
         this.loginUseCase = new LoginUseCase(username, password);
     }
 
-    public boolean checkUser(String username, String password){
-        return loginUseCase.checkUser(username, password);
+    public boolean checkUser(){
+        return loginUseCase.checkUser();
+    }
+
+    public User getUser(){
+        return loginUseCase.getUser();
     }
 
 

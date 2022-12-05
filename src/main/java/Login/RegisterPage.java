@@ -74,7 +74,7 @@ public class RegisterPage implements ActionListener {
             String display = display_name.getText();
             RegisterController registerController = new RegisterController(display, username,password1, password2);
 
-            if (registerController.registerUser(display, username, password1, password2).equals("exists")){
+            if (registerController.registerUser().equals("exists")){
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("This username already exists. Please try again.");
             }
@@ -82,7 +82,7 @@ public class RegisterPage implements ActionListener {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("Input fields cannot be left empty. Please try again.");
             }
-            else if (registerController.registerUser(display, username, password1, password2).equals("Passwords not matching")){
+            else if (registerController.registerUser().equals("Passwords not matching")){
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("Passwords are not matching. Please try again.");
             }
@@ -98,5 +98,8 @@ public class RegisterPage implements ActionListener {
             LoginPage newLoginPage = new LoginPage();
         }
 
+    }
+    public JButton getButton(){
+        return this.registerButton;
     }
 }
