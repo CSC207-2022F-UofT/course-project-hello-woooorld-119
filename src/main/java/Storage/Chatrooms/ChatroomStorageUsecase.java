@@ -1,5 +1,7 @@
-package Storage;
+package Storage.Chatrooms;
+import Storage.Storage;
 import tutorial.Chatroom;
+import Storage.Reader;
 
 public class ChatroomStorageUsecase implements ChatroomStorageGateway{
     Storage chatroom_storage;

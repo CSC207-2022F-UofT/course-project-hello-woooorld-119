@@ -1,4 +1,4 @@
-package Storage;
+package Storage.Users;
 
 import tutorial.User;
 

@@ -15,7 +15,7 @@ public class Storage {
     public Storage(String name) {
         this.file_name = name;
     }
-    void writefile(String text) {
+    public void writefile(String text) {
         try {
             Files.write(Paths.get(file_name), text.getBytes());
         } catch(IOException e) {
@@ -23,7 +23,7 @@ public class Storage {
         }
     }
 
-    String readfile() {
+    public String readfile() {
         try {
             return Files.readString(Path.of(file_name));
         } catch (IOException e){
@@ -32,9 +32,11 @@ public class Storage {
         }
     }
 
-    ArrayList<String> getfiles() {
+    public ArrayList<String> getfiles() {
         try {
             Stream<Path> result = Files.walk(Paths.get(file_name));
+            // the line below goes through all files inside the specified folder and then gets the name of the file without the .txt extension.
+            // we need to get rid of the extension since our specific storages like AccountsStorage and ChatroomStorage already append the .txt extension
             return (ArrayList<String>) result.filter(Files::isRegularFile).map(x -> x.toString().replaceFirst(".txt", "").replaceFirst("storage/chatrooms/", "")).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
