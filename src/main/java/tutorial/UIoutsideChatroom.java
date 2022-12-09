@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import tutorial.UIPublicProfile;
 import tutorial.UIPrivateProfile;
-import tutorial.DirectMessage;
+//import tutorial.DirectMessage;
 
 public class UIoutsideChatroom {
     private final User user;
