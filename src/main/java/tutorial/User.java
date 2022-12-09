@@ -12,6 +12,9 @@ public class User {
     private ArrayList<User> friendsList;
     private String username;
     private String password;
+    private String bio;
+    private String status;
+    private String comment;
 
     /**
      * Construct a User
@@ -26,6 +29,20 @@ public class User {
         this.listofChatroom = new ArrayList<>();
         this.friendsList = new ArrayList<>();
         this.password = password;
+        this.listofChatroom = new ArrayList<Chatroom>();
+        this.friendsList = new ArrayList<User>();
+        this.password = password;
+        this.bio = "Empty";
+        this.status = "Empty";
+        this.comment = "Empty";
+    }
+
+    public String getUserDisplayName(){
+        return this.displayName;
+    }
+
+    public void setDisplayName(String newName){
+        this.displayName = newName;
     }
 
     public void addUserToChatroom(Chatroom chatroom_name){
@@ -45,6 +62,10 @@ public class User {
         this.password = password;
     }
 
+    public String getPassword(){
+        return this.password;
+    }
+
     public String getUsername(){
         return this.username;
     }
@@ -55,5 +76,24 @@ public class User {
 
     public ArrayList<User> getFriendsList(){
         return this.friendsList;
+    }
+
+    public String getBio(){
+        return bio;
+    }
+    public void setBio(String bio){
+        this.bio = bio;
+    }
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
+    }
+    public String getComment(){
+        return comment;
+    }
+    public void setComment(String comment){
+        this.comment = comment;
     }
 }

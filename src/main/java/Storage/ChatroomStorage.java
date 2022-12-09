@@ -3,7 +3,7 @@ package Storage;
 public class
 ChatroomStorage extends Storage {
     public ChatroomStorage(String name) {
-        super("storage/chatrooms/" + name + ".txt");
+        super( name + ".txt");
     }
 
     @Override

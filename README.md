@@ -1,16 +1,15 @@
-MILESTONE 4 PULL REQUEST EXPLANATIONS 
+PRESENTATION SLIDESHOW LINK: https://docs.google.com/presentation/d/1XN3rOhqg0ClOlGjq0Nb9WZg8lnwxaB2-0TjlpN8tNbk/edit?usp=sharing
+
+MILESTONE 4/5 PULL REQUEST EXPLANATIONS 
 
 ISABEL
-1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/13
-Here, I added the majority of the User class implementation. I believe this was significant as the class is an entity
-and is needed in order for the other classes to work. This was the pull request done after writing new methods and 
-adding the changes made to implement Storage.  
+1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/26
+Created and added new tests for the User class. Tested if the methods called the appropriate variables and returned the proper objects.
+
 2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
 This is a more recent pull request, however, I believe my review was significant as I ensured that our group's code is staying consistent throughout 
 everyone's parts. This is in terms of method/function names. As well, I asked for reviews on code written based on what the group had previously 
 discussed. This is to ensure we are all on the same page with the design of the application and that our logic is clear so there is no confusion. 
-
-Note: I will be writing test cases for Milestone 5 with Nivedha 
 
 NIVEDHA
 
@@ -27,35 +26,29 @@ https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
 - comment and approval under files changed related to UI implementing a way for a Chatroom to be hidden once number of users becomes 0 and clarifications 
 regarding the structure of the Chatroom class
 
-Note: I will be writing test cases for milestone 5 with Isabel
-
 JEFF
-1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/11
-This is my biggest pull request when I nearly completed the backbone of the storage system. I took inspiration from the data access we learned from lecture. Although no test cases were uploaded, I tested this on my own and the test cases will be uploaded by milestone 5.
-
-2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/12
-I actively gave feedback and advice through multiple changes in this pull request.
-
-SAM
 1. 
 2.
 
+SAMANDAR
+1. I have made the pull request https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/29. I was mainly responsible for implementing the Login System which includes the registration page and the login page. I was also responsible for implementing the private and public profile pages. The user interfaces for the login system and the profile pages all work. All of the UI's have their own controller and use case classes that help with processing numerous actions such a button press or creating an account. These classes mainly worked with the User entity class to modify/update user data (used in the private and public profiles) and the storage class to save user login info when creating an account, checking whether the information matches when logging in, and saving user data when updating the user profile. 
+
+I have also created the tests for each of the pages. However, when it came to testing the user interfaces directly, I had some challenges and instead I decided to test the main functionalities such testing whether the new account is saved in storage when a user registers an account. Testing other functionalities include checking whether the username and password match by comparing it with the data saved in storage. Checking whether the updates have been stored when modifying the public/private profile pages. Checking whether the user data is retained when a user signs out and tries to sign back in. 
+
 EVAN
-I have made a pull request https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
+I have made a pull request https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22 
 (2 user intefaces #22), even though it hasn't gone through, but I have the changes in file UIinsdeChatroom
 and UIoutsideChatroom in 2-user-interfaces and both are pretty much complete and runnable.(since being able to see the output
-are quite important for designing the User interfaces. You can pull the files from branches 2-user-interfaces and run!, not from main).
+are quite important for designing the User interfaces. You can pull the files from branches 2-user-interfaces and run!, not from main). 
 I have set it up and made it runnable in UIoutsideChatroom's main, so that clicking button named tut119 will run UIinsideChatroom
 and both should pop-up a frame with buttons and chat_window. for now only and create chatroom and enter chatroom button is clickable
 and send message button inside chatroom.
 
-The pull request I made some review would be the same pull request as above, where I have discussed the problem with Jeff
+The pull request I made some review would be the same pull request as above, where I have discussed the problem with Jeff 
 of having data interfering the terminal or UI in Sam's work, which allowed me to actually realize the problem in the code.
 Sam actually have the data reading and outputting in terminal which go against of our design of the project. While now it is fixed,
-it made us clear of how we actually want our UI designed.
+it made us clear of how we actually want our UI designed. 
 
 TC
-1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/23
-In this pull request, I have implemented the ability to create direct message chatrooms among users. Throughout the writing process of this class, I used Discord to give me a picture on what kind of functions would be beneficial or are needed while direct messaging people. 
-2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/16
-In this pull request, my teammate reminded me that I was heading toward the wrong direction because addmessage shouldn't be an entity. However, I wasn't really sure how to fix it at the start. However, after asking for a clearification during the tutorial, I unserstood what was the issue and got it sorted out. 
+1. 
+2. 
