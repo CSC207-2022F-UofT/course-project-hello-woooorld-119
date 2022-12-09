@@ -27,32 +27,27 @@ https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
 regarding the structure of the Chatroom class
 
 JEFF
-1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/11
-This is my biggest pull request when I nearly completed the backbone of the storage system. I took inspiration from the data access we learned from lecture. Although no test cases were uploaded, I tested this on my own and the test cases will be uploaded by milestone 5.
-
-2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/12
-I actively gave feedback and advice through multiple changes in this pull request.
+1. 
+2.
 
 SAM
 1. 
 2.
 
 EVAN
-I have made a pull request https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22
+I have made a pull request https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/22 
 (2 user intefaces #22), even though it hasn't gone through, but I have the changes in file UIinsdeChatroom
 and UIoutsideChatroom in 2-user-interfaces and both are pretty much complete and runnable.(since being able to see the output
-are quite important for designing the User interfaces. You can pull the files from branches 2-user-interfaces and run!, not from main).
+are quite important for designing the User interfaces. You can pull the files from branches 2-user-interfaces and run!, not from main). 
 I have set it up and made it runnable in UIoutsideChatroom's main, so that clicking button named tut119 will run UIinsideChatroom
 and both should pop-up a frame with buttons and chat_window. for now only and create chatroom and enter chatroom button is clickable
 and send message button inside chatroom.
 
-The pull request I made some review would be the same pull request as above, where I have discussed the problem with Jeff
+The pull request I made some review would be the same pull request as above, where I have discussed the problem with Jeff 
 of having data interfering the terminal or UI in Sam's work, which allowed me to actually realize the problem in the code.
 Sam actually have the data reading and outputting in terminal which go against of our design of the project. While now it is fixed,
-it made us clear of how we actually want our UI designed.
+it made us clear of how we actually want our UI designed. 
 
 TC
-1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/23
-In this pull request, I have implemented the ability to create direct message chatrooms among users. Throughout the writing process of this class, I used Discord to give me a picture on what kind of functions would be beneficial or are needed while direct messaging people. 
-2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/16
-In this pull request, my teammate reminded me that I was heading toward the wrong direction because addmessage shouldn't be an entity. However, I wasn't really sure how to fix it at the start. However, after asking for a clearification during the tutorial, I unserstood what was the issue and got it sorted out. 
+1. 
+2. 

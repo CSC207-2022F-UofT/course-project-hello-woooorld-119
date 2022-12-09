@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Storage {
-    String file_name;
+    public String file_name;
 
     public Storage(String name) {
         this.file_name = name;

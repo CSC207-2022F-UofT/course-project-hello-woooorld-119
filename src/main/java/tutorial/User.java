@@ -8,11 +8,14 @@ import java.sql.Timestamp;
 
 public class User {
     private String displayName;
-    private ArrayList<String> listofChatroom;
-    private ArrayList<String> friendsList;
+    private ArrayList<Chatroom> listofChatroom;
+    private ArrayList<User> friendsList;
     private String username;
     private String password;
-    private ArrayList<Timestamp> loginTracker;
+    private String bio;
+    private String status;
+    private String comment;
+
 
     /**
      * Construct a User
@@ -24,22 +27,32 @@ public class User {
     public User(String displayName, String username, String password) {
         this.displayName = displayName;
         this.username = username;
-        this.listofChatroom = new ArrayList<String>();
-        this.friendsList = new ArrayList<String>();
+        this.listofChatroom = new ArrayList<Chatroom>();
+        this.friendsList = new ArrayList<User>();
         this.password = password;
-        this.loginTracker = new ArrayList<>();
+        this.bio = "Empty";
+        this.status = "Empty";
+        this.comment = "Empty";
     }
 
-    public void addUserToChatroom(String chatroom_name){
+    public String getUserDisplayName(){
+        return this.displayName;
+    }
+
+    public void setDisplayName(String newName){
+        this.displayName = newName;
+    }
+
+    public void addUserToChatroom(Chatroom chatroom_name){
         // chatroom.adduser()
         this.listofChatroom.add(chatroom_name);
     }
 
-    public void addUserToFriendList(String friend_username){
+    public void addUserToFriendList(User friend_username){
         this.friendsList.add(friend_username);
     }
 
-    public void removeUserFromFriendList(String friend_username){
+    public void removeUserFromFriendList(User friend_username){
         this.friendsList.remove(friend_username);
     }
 
@@ -47,31 +60,37 @@ public class User {
         this.password = password;
     }
 
+    public String getPassword(){
+        return this.password;
+    }
+
     public String getUsername(){
         return this.username;
     }
 
-    public ArrayList<String> getListofChatroom(){
+    public ArrayList<Chatroom> getListofChatroom(){
         return this.listofChatroom;
     }
 
-    public ArrayList<String> getFriendsList(){
+    public ArrayList<User> getFriendsList(){
         return this.friendsList;
     }
-
-    // Setter of loginTracker and getter of loginTacker
-
-    public void setLoginTracker(ArrayList<Timestamp>loginTracker){
-        this.loginTracker = loginTracker;
+    public String getBio(){
+        return bio;
     }
-
-    public ArrayList<Timestamp>getLoginTracker(){
-        return loginTracker;
+    public void setBio(String bio){
+        this.bio = bio;
     }
-
-    // Method to update login tracker
-
-    public void updateLoginTracker(Timestamp timing){
-        loginTracker.add(timing);
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
+    }
+    public String getComment(){
+        return comment;
+    }
+    public void setComment(String comment){
+        this.comment = comment;
     }
 }
