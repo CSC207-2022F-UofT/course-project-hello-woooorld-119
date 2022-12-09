@@ -1,5 +1,6 @@
 package tutorial;
 
+import Storage.AccountsStorageUseCase;
 import Storage.UserStorageUseCase;
 
 public class ProfileUseCase {
@@ -11,6 +12,7 @@ public class ProfileUseCase {
     private String comment;
     private User user;
     private UserStorageUseCase userStorage;
+    private AccountsStorageUseCase accountsStorageUseCase;
 
     public ProfileUseCase(User user){
         username = user.getUsername();
@@ -21,6 +23,7 @@ public class ProfileUseCase {
         comment = user.getComment();
         this.user = user;
         userStorage = new UserStorageUseCase(username);
+        accountsStorageUseCase = new AccountsStorageUseCase();
     }
 
     public String getUsername(){
@@ -44,6 +47,7 @@ public class ProfileUseCase {
 
     public void modifyPassword(String newPassword){
         user.setPassword(newPassword);
+        accountsStorageUseCase.save(username, newPassword);
         userStorage.saveData(user);
     }
     public void modifyDisplayName(String newName){
