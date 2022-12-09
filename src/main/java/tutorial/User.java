@@ -16,7 +16,6 @@ public class User {
     private String status;
     private String comment;
 
-
     /**
      * Construct a User
      *
@@ -27,6 +26,9 @@ public class User {
     public User(String displayName, String username, String password) {
         this.displayName = displayName;
         this.username = username;
+        this.listofChatroom = new ArrayList<>();
+        this.friendsList = new ArrayList<>();
+        this.password = password;
         this.listofChatroom = new ArrayList<Chatroom>();
         this.friendsList = new ArrayList<User>();
         this.password = password;
@@ -48,12 +50,12 @@ public class User {
         this.listofChatroom.add(chatroom_name);
     }
 
-    public void addUserToFriendList(User friend_username){
-        this.friendsList.add(friend_username);
+    public void addUserToFriendList(User friend){
+        this.friendsList.add(friend);
     }
 
-    public void removeUserFromFriendList(User friend_username){
-        this.friendsList.remove(friend_username);
+    public void removeUserFromFriendList(User friend){
+        this.friendsList.remove(friend);
     }
 
     public void setPassword(String password){
@@ -75,6 +77,7 @@ public class User {
     public ArrayList<User> getFriendsList(){
         return this.friendsList;
     }
+
     public String getBio(){
         return bio;
     }
