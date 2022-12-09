@@ -1,20 +1,14 @@
-package tutorial;
-import Storage.ChatroomStorageGateway;
-import Storage.ChatroomStorageUsecase;
-import tutorial.Chatroom;
-import tutorial.User;
-import tutorial.UIinsidechatroom_backend;
-import tutorial.UIPublicProfile;
+package UI;
+import Entity.Chatroom;
+import Entity.User;
+import Storage.UserStorageUseCase;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.*;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import Storage.MessagesStorageGateway;
-import Storage.MessagesStorageUsecase;
 
 public class UIinsideChatroom {
     private Chatroom chatroom;
@@ -85,6 +79,10 @@ public class UIinsideChatroom {
                         this.outside_window.getFrame().dispose();
                         this.outside_window.display();
                         this.display_current_chatroom();
+                    UserStorageUseCase user_0 = new UserStorageUseCase(this.user.getUsername());
+                    user_0.saveData(this.user);
+                    UserStorageUseCase user_1 = new UserStorageUseCase(obj.getUser(name).getUsername());
+                    user_1.saveData(obj.getUser(name));
                 });
         }
         b.add(user_lst);
@@ -120,7 +118,7 @@ public class UIinsideChatroom {
         panel.setLayout(new GridLayout(10,1));
         for (String b: obj.getmember_lst(this.chatroom)){
             //creates the user icon, along with the functionality of clicking in to their public profile
-            if (!b.equals(this.user.getUserDisplayName())) {
+            if (!b.equals(this.user.getUsername())) {
                 JButton button = this.create_public_profile_button(b);
                 panel.add(button);
             }
@@ -163,7 +161,8 @@ public class UIinsideChatroom {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIPublicProfile obj = new UIPublicProfile(user, user);
+                UIinsidechatroom_backend obj1 = new UIinsidechatroom_backend();
+                UIPublicProfile obj = new UIPublicProfile(obj1.getUser(name), user);
                 obj.display(); // goes to the UI public profile page
             }
         });

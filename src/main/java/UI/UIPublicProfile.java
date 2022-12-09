@@ -1,9 +1,8 @@
-package tutorial;
+package UI;
 
-import tutorial.User;
+import Entity.User;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

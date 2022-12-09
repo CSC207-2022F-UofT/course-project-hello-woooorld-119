@@ -1,6 +1,6 @@
 package Storage;
 
-import tutorial.Chatroom;
+import Entity.Chatroom;
 
 //use case
 public interface ChatroomStorageGateway {

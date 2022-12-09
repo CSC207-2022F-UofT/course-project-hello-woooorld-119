@@ -1,7 +1,6 @@
-package tutorial;
+package UI;
 
 import Login.RegisterUseCase;
-import Storage.UserStorageUseCase;
 
 public class PrivateProfilePageMain {
     public static void main(String[] args){

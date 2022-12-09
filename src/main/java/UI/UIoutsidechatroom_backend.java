@@ -1,6 +1,7 @@
-package tutorial;
+package UI;
 
-import Storage.UserStorageUseCase;
+import Entity.Chatroom;
+import Entity.User;
 
 import java.util.ArrayList;
 

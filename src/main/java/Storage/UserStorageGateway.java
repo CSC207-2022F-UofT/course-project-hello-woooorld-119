@@ -1,8 +1,6 @@
 package Storage;
 
-import tutorial.User;
-
-import java.util.Map;
+import Entity.User;
 
 public interface UserStorageGateway {
     User getData();

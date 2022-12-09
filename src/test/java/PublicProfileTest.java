@@ -1,9 +1,8 @@
 import Login.RegisterUseCase;
-import Storage.UserStorageUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tutorial.ProfileUseCase;
-import tutorial.User;
+import UI.ProfileUseCase;
+import Entity.User;
 
 public class PublicProfileTest {
     //This test checks whether the display name is updated and stored when modified in the public profile page.

@@ -1,7 +1,8 @@
-package tutorial;
+package UI;
 
 import Storage.AccountsStorageUseCase;
 import Storage.UserStorageUseCase;
+import Entity.*;
 
 public class ProfileUseCase {
     private String username;

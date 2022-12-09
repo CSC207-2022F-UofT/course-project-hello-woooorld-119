@@ -1,8 +1,6 @@
-package tutorial;
-import Login.LoginController;
-import Login.RegisterPage;
-import Login.WelcomePage;
-import tutorial.User;
+package UI;
+
+import Entity.User;
 
 import javax.swing.*;
 import java.awt.*;

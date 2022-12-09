@@ -2,7 +2,7 @@ package Login;
 
 import Storage.AccountsStorageUseCase;
 import Storage.UserStorageUseCase;
-import tutorial.User;
+import Entity.User;
 
 import java.util.Objects;
 

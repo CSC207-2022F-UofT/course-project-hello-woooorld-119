@@ -1,8 +1,4 @@
-package tutorial;
-
-import Messages.Message;
-import Storage.ChatroomStorageGateway;
-import Storage.ChatroomStorageUsecase;
+package Entity;
 
 import java.util.ArrayList;
 

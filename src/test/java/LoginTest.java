@@ -2,7 +2,6 @@ import Login.LoginUseCase;
 import Login.RegisterUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tutorial.HelloWorld;
 
 public class LoginTest {
     //This test checks whether the username exists after creating a user and storing user data.

@@ -1,6 +1,6 @@
 package Login;
 
-import tutorial.User;
+import Entity.User;
 
 public class LoginController {
     private String username;

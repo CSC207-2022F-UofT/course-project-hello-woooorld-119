@@ -1,14 +1,10 @@
-package tutorial;
+package UI;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import Entity.Chatroom;
+import Entity.User;
 import Storage.ChatroomStorageUsecase;
-import tutorial.Chatroom;
-import tutorial.User;
-import Storage.ChatroomStorage;
 import Storage.ChatroomStorageGateway;
 import javax.swing.*;
 

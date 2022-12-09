@@ -1,6 +1,6 @@
 package Storage;
 
-import tutorial.Chatroom;
+import Entity.Chatroom;
 
 import java.util.ArrayList;
 import java.util.List;

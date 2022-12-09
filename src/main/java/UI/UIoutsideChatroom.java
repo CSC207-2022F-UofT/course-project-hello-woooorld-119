@@ -1,22 +1,19 @@
-package tutorial;
-import Login.LoginMain;
+package UI;
 import Login.LoginPage;
-import Storage.ChatroomStorage;
 import Storage.ChatroomStorageGateway;
 import Storage.ChatroomStorageJ;
 import Storage.ChatroomStorageUsecase;
-import tutorial.Chatroom;
-import tutorial.User;
-import tutorial.UIoutsidechatroom_backend;
-import tutorial.UIinsideChatroom;
+import Entity.Chatroom;
+import Entity.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import tutorial.UIPublicProfile;
-import tutorial.UIPrivateProfile;
+import UI.UIPublicProfile;
+import UI.UIPrivateProfile;
 //import tutorial.DirectMessage;
 
 public class UIoutsideChatroom {

@@ -1,6 +1,6 @@
 package User;
 
-import tutorial.User;
+import Entity.User;
 
 public class PublicProfile implements PublicProfileInterface {
 
