@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UIPrivateProfile implements ActionListener {
+public class UIPrivateProfile implements ActionListener, EditProfileStrategyInterface {
 
     JFrame frame = new JFrame();
     JButton editPasswordButton = new JButton("Update Password");
@@ -30,6 +30,7 @@ public class UIPrivateProfile implements ActionListener {
         displayName.setText(privateProfile.getDisplayName());
     }
 
+    @Override
     public void display(){
         //displays the current user's private page
         displayNamelabel.setBounds(50, 100, 175, 25);
