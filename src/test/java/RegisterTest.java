@@ -1,10 +1,8 @@
-import Login.LoginUseCase;
-import Login.RegisterPage;
 import Login.RegisterUseCase;
 import Storage.UserStorageUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tutorial.User;
+import Entity.User;
 
 public class RegisterTest {
     //This test checks whether the username already exists when creating a new user. If the username is already taken,

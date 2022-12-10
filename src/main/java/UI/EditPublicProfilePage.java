@@ -1,4 +1,6 @@
-package tutorial;
+package UI;
+
+import Entity.User;
 
 import javax.swing.*;
 import java.awt.*;

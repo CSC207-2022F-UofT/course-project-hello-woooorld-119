@@ -1,10 +1,11 @@
-package tutorial;
+package UI;
 
+import Entity.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
+import UI.ProfileUseCase;
 
 public class EditPrivateProfilePage implements ActionListener {
     private String modifyDisplayName;

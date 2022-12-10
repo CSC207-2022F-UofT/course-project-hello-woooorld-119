@@ -1,4 +1,4 @@
-package tutorial;
+package UI;
 
 public interface EditProfileStrategyInterface {
     //Designed to be implemented by classes that edit profile pages for users.

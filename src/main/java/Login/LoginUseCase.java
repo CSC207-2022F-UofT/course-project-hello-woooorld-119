@@ -1,7 +1,7 @@
 package Login;
 import Storage.AccountsStorageUseCase;
 import Storage.UserStorageUseCase;
-import tutorial.User;
+import Entity.User;
 
 /*
  * This UseCase class is responsible for storing all the data from the user regarding the login information.

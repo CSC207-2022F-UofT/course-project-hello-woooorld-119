@@ -1,4 +1,6 @@
-package tutorial;
+package UI;
+
+import Entity.User;
 
 public class PublicProfileController {
     private User userOwner;

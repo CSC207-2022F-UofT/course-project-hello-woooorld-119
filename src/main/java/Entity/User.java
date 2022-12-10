@@ -1,10 +1,6 @@
-package tutorial;
+package Entity;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.*;
-import java.sql.Timestamp;
 
 public class User {
     private String displayName;

@@ -1,11 +1,11 @@
 package Login;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
-import tutorial.*;
+
+import UI.UIoutsideChatroom;
+import Entity.*;
 
 public class LoginPage implements ActionListener {
     JFrame frame = new JFrame();
