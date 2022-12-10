@@ -43,12 +43,14 @@ public class UIinsideChatroom {
     }
 
     public void setup_chatwindow_message(JTextArea chat_window){
+        //reads this chatroom's message list, assume chatroom stores the message history
         for (String txt: this.chatroom.getMessage()) {
             chat_window.setText(txt);
         }
     }
 
     public ArrayList<String> get_non_friend(){
+        //returns the list of strings that are not friends of the current user with the current chatroom.
         ArrayList<String> member_lst, result = new ArrayList<String>(), friend_lst = new ArrayList<String>();
         member_lst = this.chatroom.getUserLst();
         ArrayList<User> lst = this.user.getFriendsList();
@@ -64,6 +66,7 @@ public class UIinsideChatroom {
     }
 
     public void create_add_friend_menu(User user){
+        //allows user to add any non friend user in the same chatroom, also updates the both window outside and inside chatroom
         JMenuBar b = new JMenuBar();
         JMenu user_lst = new JMenu();
         b.setBounds(650, 25, 100 ,50);
@@ -90,6 +93,7 @@ public class UIinsideChatroom {
     }
 
     public void create_invite_friend_memu(){
+        //allows user to invite friend from outside the chatroom, also updates the two window inside and outside chatroom
         JMenuBar b = new JMenuBar();
         JMenu user_lst = new JMenu();
         b.setBounds(650, 75, 100 ,50);

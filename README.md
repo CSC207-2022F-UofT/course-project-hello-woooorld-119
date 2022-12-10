@@ -8,6 +8,7 @@ on other users name under member/friend list to view their public profile. User 
 User can also create chatrooms or direct message with their friend, all of which will be stored in database after chatroom is being created.
 
 demos of the software can be found under folder demos(numbers after the file name represents the order).
+This software starts from LoginMain.
 
 MILESTONE 4/5 PULL REQUEST EXPLANATIONS 
 

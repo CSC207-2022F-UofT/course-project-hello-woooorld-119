@@ -47,6 +47,7 @@ public class UIoutsideChatroom {
     }
 
     public void create_dm_button(){
+        //user can created dm chatrooms with another user, meant to collaborates with the dm feature in inital desgin
         JButton b = new JButton();
         b.setText("DirectMessage with friend");
         b.setBounds(400, 50, 200,100);
@@ -68,6 +69,7 @@ public class UIoutsideChatroom {
     }
 
     public ArrayList<Chatroom> not_joined_rooms(){
+        // return list of chatroom that this user not joined, meant to collaborate with join chatroom button.
         ChatroomStorageJ obj = new ChatroomStorageJ();
         ArrayList<String> joined = new ArrayList<>();
         ArrayList<Chatroom> result = new ArrayList<>();
@@ -85,6 +87,8 @@ public class UIoutsideChatroom {
     }
 
     public void create_join_chatroom_button(){
+        //allow user to join any existing chatrooms stored in storage, meant to allow connections between new registered user
+        //and existing users. since they can add friends from there.
         JMenuBar b = new JMenuBar();
         JMenu room_lst = new JMenu();
         b.setBounds(275, 50, 100 ,100);
@@ -117,6 +121,7 @@ public class UIoutsideChatroom {
     }
 
     public void create_sign_out_button(JFrame frame){
+        //allow user to sign out and return to the log in page.
         JButton button = new JButton();
         button.setEnabled(true);
         button.setText("Sign out");
@@ -152,7 +157,7 @@ public class UIoutsideChatroom {
     }
 
     public void display_friend_lst(){
-        //display this user's friendlist
+        //display this user's friendlist from using backend methods
         UIoutsidechatroom_backend obj = new UIoutsidechatroom_backend();
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(5,0));
