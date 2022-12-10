@@ -23,7 +23,7 @@ public class RegisterTest {
     //This test does not register the user when both of the passwords are not matching.
     @Test
     void PasswordsNotMatching() {
-        RegisterUseCase evan = new RegisterUseCase("evan", "evan", "vijay",
+        RegisterUseCase evan = new RegisterUseCase("sahil", "sahil", "vijay",
                 "123");
         String actual = evan.registerUser();
         Assertions.assertEquals("Passwords not matching", actual);

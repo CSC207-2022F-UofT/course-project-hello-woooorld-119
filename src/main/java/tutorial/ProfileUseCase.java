@@ -15,15 +15,16 @@ public class ProfileUseCase {
     private AccountsStorageUseCase accountsStorageUseCase;
 
     public ProfileUseCase(User user){
-        userStorage = new UserStorageUseCase(user.getUsername());
-        this.user = userStorage.getData();
+
+        username = user.getUsername();
+        password = user.getPassword();
+        displayName = user.getUserDisplayName();
+        bio = user.getBio();
+        status = user.getStatus();
+        comment = user.getComment();
+        this.user = user;
+        userStorage = new UserStorageUseCase(username);
         accountsStorageUseCase = new AccountsStorageUseCase();
-        username = this.user.getUsername();
-        password = this.user.getPassword();
-        displayName = this.user.getUserDisplayName();
-        bio = this.user.getBio();
-        status = this.user.getStatus();
-        comment = this.user.getComment();
     }
 
     public String getUsername(){
