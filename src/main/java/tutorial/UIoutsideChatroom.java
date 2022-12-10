@@ -38,6 +38,7 @@ public class UIoutsideChatroom {
         create_chatroom_button(); //calls to create a button to create chatroom
         enter_public_profile_button(this.user); //creates this user's public profile and allow edit
         enter_private_profile_button(this.user); //creates this user's private profile and allow edit
+        //enter_public_profile_button(this.user, new UIPrivateProfile(user), "private profile", 370);
         this.frame.setLayout(null);//using no layout managers
         this.frame.setVisible(true);//making the frame visible
         this.create_sign_out_button(this.frame);
@@ -212,6 +213,7 @@ public class UIoutsideChatroom {
         b.addActionListener(e -> {
             UIPublicProfile obj = new UIPublicProfile(user, user);
             obj.display(); // goes to the UI publicprofile page
+            //strategy.display();
         });
     }
 

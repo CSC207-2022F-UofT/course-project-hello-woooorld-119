@@ -15,6 +15,7 @@ public class ProfileUseCase {
     private AccountsStorageUseCase accountsStorageUseCase;
 
     public ProfileUseCase(User user){
+
         username = user.getUsername();
         password = user.getPassword();
         displayName = user.getUserDisplayName();
