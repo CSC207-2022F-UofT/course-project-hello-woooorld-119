@@ -25,7 +25,8 @@ NIVEDHA
 
 1. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/20
 - most recent pull request with the most complete version of the Chatroom entity class. 
-- Included code that allows every created Chatroom to be stored in Storage 
+- Changed the types for userList and admin variable types to accommdate usage by the storage class and UIs
+- Included code that allows every created Chatroom to be stored in Storage using abstraction
 - Included a method to allow every new message sent to also be stored in the Chatroom's message storage and updates the Chatroom data in Storage
 
 2. https://github.com/CSC207-2022F-UofT/course-project-hello-woooorld-119/pull/8
